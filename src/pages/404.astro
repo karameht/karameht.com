@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+Astro.response.status = 404;
+---
+
+<BaseLayout title="Seite nicht gefunden | karameht">
+  <section>
+    <div class="not-found">
+      <h1>404</h1>
+      <p>Oops! Diese Seite existiert nicht.</p>
+      <a href="/" class="btn">Zurück zur Startseite</a>
+    </div>
+  </section>
+</BaseLayout>

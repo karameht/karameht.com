@@ -1,0 +1,24 @@
+# Node Modules & Build-Verzeichnisse
+node_modules
+dist
+public
+.cache
+
+# Astro-Build-Dateien
+.astro
+*.astro.build
+
+# VS Code Settings
+.vscode
+
+# SCSS/CSS wird von Stylelint gehandhabt
+# src/styles
+
+# Lock-Files
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Umstrukturierung vermeiden
+*.min.js
+*.min.css

@@ -1,0 +1,62 @@
+---
+import Signature from "@/components/Signature.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { formatCategory } from "@/scripts/utils/formatCategory";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+---
+
+<BaseLayout title="Das Archiv | karameht">
+  <section>
+    <h1>Das Archiv</h1>
+
+    <hr />
+
+    <p>
+      <strong>Jede Zeile ein Werkstück.</strong> Geschmiedet aus Erfahrung, geschärft durch Reflexion. Nur Gedanken, die
+      Gewicht haben.
+    </p>
+
+    <blockquote>Hier liegt nicht nur die Vergangenheit – hier ruht Erkenntnis.</blockquote>
+
+    <Signature prefix="Zu Ende gedachte Erkentnisse" />
+    <br />
+
+    <div class="posts">
+      {
+        sortedPosts.map((post) => {
+          const category = post.data.category || "42";
+          return (
+            <article class="post">
+              <h2 class="post__title">
+                <a href={`/${category}/${post.slug}/`}>{post.data.title}</a>
+              </h2>
+              <div class="post__meta">
+                <time>{post.data.pubDate.toLocaleDateString("de-DE")}</time>
+                <span>{formatCategory(category)}</span>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+    <br />
+    <hr />
+
+    <p>
+      Ich habe nicht immer sofort die richtigen Worte gefunden. Manche Gedanken brauchen Zeit, um zu reifen, zu wirken,
+      zu widerhallen – bevor sie geschrieben werden können.
+    </p>
+
+    <p>
+      Was du hier liest, ist nicht spontan entstanden. Es ist das Ergebnis von Geduld, Zweifel, Klarheit. Kein Content.
+      Keine Eile.
+    </p>
+
+    <blockquote>Nur Worte, die reif genug waren, um jetzt gesprochen zu werden.</blockquote>
+
+    <Signature />
+  </section>
+</BaseLayout>
