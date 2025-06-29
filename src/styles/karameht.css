@@ -19,5 +19,7 @@
 @import "components/_progressBar.css";
 @import "components/_iterations.css";
 @import "components/_breathingSpace.css";
+@import "components/_codeblocks.css";
+@import "components/_table.css";
 
 @import "pages/rechtlicheAngaben.css";
