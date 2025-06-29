@@ -1,0 +1,45 @@
+---
+import Signature from "@/components/Signature.astro";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { formatCategory } from "@/scripts/utils/formatCategory";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => {
+    const category = post.data.category || "42";
+    return {
+      params: { slug: `${category}/${post.slug}` },
+      props: post,
+    };
+  });
+}
+
+const post = Astro.props;
+const { Content } = await post.render();
+const category = post.data.category || "42";
+const displayCategory = formatCategory(category);
+const pubDate = post.data.pubDate.toISOString();
+---
+
+<BlogLayout>
+  <div class="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+
+  <section>
+    <article>
+      <h1>{post.data.title}</h1>
+      <time data-pub-date={pubDate} data-display-category={displayCategory}>
+        {post.data.pubDate.toLocaleDateString("de-DE")} ·
+        {displayCategory}
+      </time>
+
+      <hr />
+
+      <Content />
+      <Signature />
+    </article>
+    <a href="/archiv">‹ Zurück zum Archiv</a>
+  </section>
+</BlogLayout>

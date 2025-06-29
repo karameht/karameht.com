@@ -1,0 +1,63 @@
+---
+import Aside from "@/components/Aside.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import "@/styles/karameht.css";
+import { ClientRouter } from "astro:transitions";
+
+const {
+  title = "karameht | Manufaktur für digitale Askese",
+  description = "Das Siegel der Unnachahmlichkeit in der Manufaktur für digitale Askese ... die Schöpfung von [ˈʁɛflɛksi̯oːn]",
+  image = "https://karameht.com/og-image.png",
+  url = "https://karameht.com/",
+} = Astro.props;
+---
+
+<html lang="de" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+
+    <ClientRouter />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Mehmet Karaca" />
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="karameht" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1080" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={description} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={url} />
+  </head>
+  <body class="grid">
+    <Header />
+    <Aside />
+    <main class="main">
+      <section class="main__section">
+        <slot />
+      </section>
+    </main>
+    <Footer />
+    <script src="/src/scripts/karameht.ts"></script>
+  </body>
+</html>

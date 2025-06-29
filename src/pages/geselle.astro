@@ -1,0 +1,131 @@
+---
+import Signature from "@/components/Signature.astro";
+
+import { formatCategory } from "@/scripts/utils/formatCategory";
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const allPosts = await getCollection("blog");
+const mehmetPosts = allPosts
+  .filter((post) => post.data.category === "mehmet-karaca")
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+---
+
+<BaseLayout title="Der Geselle | karameht">
+  <section>
+    <h1>Der Geselle</h1>
+
+    <hr />
+
+    <p>Ich bin Mehmet Karaca.</p>
+
+    <blockquote>
+      Geselle meiner Manufaktur für digitale Askese, <br />
+      die Klarheit zum Handwerk erhebt – und Menschlichkeit zur Architektur.
+    </blockquote>
+
+    <p>
+      Aber nicht nur das. Ich bin Softwareentwickler. Vater. Zuhörer. Freund. Ein Mensch, der die Welt wieder ein
+      bisschen <strong>Bluna</strong> machen will.
+    </p>
+
+    <p>
+      Ich trage ein inneres Siegel, für das mir lange die Worte fehlten – gewachsen aus Reduktion, Gedanken und Gefühl.
+      Ein stilles Statement, das mit der Zeit zu einer Haltung wurde.
+    </p>
+
+    <p>
+      <strong>Das Siegel der Unnachahmlichkeit.</strong>
+      Die Schöpfung von digitaler <strong>[reflɛˈksi̯oːn]</strong>.
+    </p>
+
+    <p>
+      Eine Reaktion auf das Zuviel. Auf das höher, schneller, weiter, das unsere Zeit durchdringt. Auf zwei Jahrzehnte
+      voller Webseiten, die schön aussahen – aber nichts sagten. Auf Kampagnenseiten, die verpufften, sobald das Budget
+      aufgebraucht war. Auf Features, die gebaut wurden, weil jemand „noch was wollte“ – nicht, weil es Sinn ergab.
+    </p>
+    <p>
+      Und mittendrin: <strong>Softwareentwicklung als Selbstzweck.</strong>
+      Codezeile um Codezeile, gebaut für Velocity statt für Vision. Funktion über Bedeutung. Product Owner über Sinn. Kurz
+      gesagt, Systeme ohne Konzept. Prozesse ohne Herz. Architektur ohne Haltung.
+    </p>
+
+    <p>
+      Ich habe mitgebaut, mitgeliefert, mitgeschwiegen – bis ich nicht mehr konnte. Bis zum Burnout und zurück. Bis zur
+      Selbstaufgabe. Und dann dämmerte es mir:
+    </p>
+
+    <blockquote>
+      <strong>Es zählt nicht, was du entwickelst – es zählt, wer du dabei wirst.</strong>
+    </blockquote>
+
+    <p>
+      Und deshalb entwickle ich heute mit Haltung. Mit Klarheit. Mit Bewusstsein. Für Systeme, die nicht nur
+      funktionieren – sondern tragen, verbinden und hinterlassen.
+    </p>
+
+    <p>
+      Ich habe mir mit <strong>karameht</strong> einen Ort erschaffen, an dem Reduktion kein Verzicht ist – sondern ein Werkzeug
+      für Tiefe. Doch Tiefe entsteht nicht im Lärm. Sie wächst in der Stille. Und diese Stille zu erkennen hat Jahre gedauert
+      – und noch länger, sie zuzulassen.
+    </p>
+
+    <p>
+      Erst als ich mich intensiv mit digitaler Askese und Kontrastgesetzen beschäftigte, verstand ich die Kraft der
+      Leere. Ich verband meine Sehnsucht nach Abstand mit der Konsequenz der Monochromie. Und eines darf man dabei nie
+      vergessen:
+    </p>
+
+    <p>
+      Wir leben längst in überfüllten Systemen voller Breakpoints. Soziale Ungleichheit. Endlose Loops. Leere Speicher.
+      KI statt Gehirn. Social Media statt echter Gespräche. Toxische Arbeitsdynamik statt echter Leistungsbereitschaft.
+      <strong>Und so wurde mir klar:</strong> Ich brauchte einen Übersetzer – und fand ihn in mir selbst.
+    </p>
+
+    <p>
+      So formte sich mein Stil: <strong>Poesie extrem codiert.</strong> Doch es ist mehr als Stil. Es ist Haltung. Es ist
+      Thalamus – mein innerster Resonanzraum. Ein Ort, an dem ich nicht nur schreibe, sondern spüre. Dort, wo Code auf Gefühl
+      trifft. Wo Systeme nicht neutral sind – sondern geprägt.
+    </p>
+
+    <p>
+      <strong>Denn Authentizität ist unbequem.</strong> Sie zwingt uns, unsere Default-Werte zu hinterfragen. Sie fordert
+      uns auf, bewusst zu programmieren – nicht nur in Software, sondern im Denken und auch im Leben. Man sagt, man solle
+      das Herz nicht auf der Zunge tragen. Ich sage: Doch, genau da gehört es hin. Denn Klarheit ist kein Risiko – sie ist
+      der einzige Weg, der bleibt.
+    </p>
+
+    <hr />
+
+    <blockquote>
+      Ein Algorithmus der Authentizität.
+      <strong>Meine Authentizität.</strong>
+    </blockquote>
+
+    <Signature prefix="Meine Geschichte" />
+
+    {
+      mehmetPosts.length > 0 ? (
+        mehmetPosts.map((post) => {
+          const category = post.data.category || "42";
+
+          return (
+            <article class="post">
+              <h2 class="post__title">
+                <a href={`/${category}/${post.slug}/`}>{post.data.title}</a>
+              </h2>
+              <div class="post__meta">
+                <time>{post.data.pubDate.toLocaleDateString("de-DE")}</time>
+                <span>{formatCategory(category)}</span>
+              </div>{" "}
+            </article>
+          );
+        })
+      ) : (
+        <p>Noch keine persönlichen Beiträge vorhanden.</p>
+      )
+    }
+
+    <Signature />
+  </section>
+</BaseLayout>

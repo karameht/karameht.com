@@ -1,0 +1,30 @@
+{
+  "name": "astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.4.1",
+    "@fontsource-variable/inter": "^5.2.6",
+    "@fontsource/allura": "^5.2.6",
+    "@fontsource/space-mono": "^5.2.7",
+    "astro": "^5.10.1",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "postcss": "^8.5.6",
+    "postcss-nested": "^7.0.2",
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.13.0"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}

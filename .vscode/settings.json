@@ -1,0 +1,5 @@
+{
+  "markdownlint.config": {
+    "MD033": false // HTML tags in Markdown allowed
+  }
+}

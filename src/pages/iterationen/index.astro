@@ -1,0 +1,58 @@
+---
+import Signature from "@/components/Signature.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const allIterations = await getCollection("iteration");
+const sortedIterations = allIterations.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<BaseLayout title="Iterationen | karameht">
+  <section>
+    <h1>Iterationen</h1>
+
+    <hr />
+
+    <p>
+      <strong>Transparenz im Handwerk.</strong> Jede Iteration dokumentiert, jeder Schritt nachvollziehbar. Keine schwarze
+      Magie – nur ehrliche Entwicklung.
+    </p>
+
+    <blockquote>
+      Fortschritt ist nicht linear.<br />
+      Fortschritt ist iterativ.<br />
+      Fortschritt ist sichtbar.
+    </blockquote>
+
+    <Signature prefix="Aus der Werkstatt" />
+
+    <div class="iterations">
+      {
+        sortedIterations.map((iteration) => (
+          <article class="iteration">
+            <div class="iteration__header">
+              <div class="iteration__meta">
+                <span class={`iteration__type iteration__type--${iteration.data.type}`}>{iteration.data.type}</span>
+                <span class="iteration__version">{iteration.data.version}</span>
+                <time class="iteration__date">{iteration.data.date.toLocaleDateString("de-DE")}</time>
+              </div>
+              <h2 class="iteration__title">
+                <a href={`/iterationen/${iteration.slug}/`}>{iteration.data.title}</a>
+              </h2>
+            </div>
+
+            <p class="iteration__summary">{iteration.data.summary}</p>
+
+            <ul class="iteration__changes">
+              {iteration.data.changes.map((change) => (
+                <li>{change}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

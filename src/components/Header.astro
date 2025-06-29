@@ -1,0 +1,17 @@
+---
+import Logo from "@/components/Logo.astro";
+import Navigation from "@/components/Navigation.astro";
+import HeaderActions from "./HeaderActions.astro";
+---
+
+<header class="header">
+  <a href="/">
+    <Logo />
+  </a>
+
+  <Navigation class="header__nav--desktop" />
+
+  <HeaderActions />
+
+  <Navigation class="header__nav--mobile" />
+</header>

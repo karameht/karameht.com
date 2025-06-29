@@ -1,0 +1,16 @@
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--bg-primary);
+  font-weight: 200;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+}
+
+hr {
+  border: none;
+  height: var(--border-width);
+  background: var(--border-color);
+  opacity: 0.5;
+  margin: 2rem auto;
+}

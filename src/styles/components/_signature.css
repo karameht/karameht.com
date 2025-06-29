@@ -1,0 +1,8 @@
+.signature {
+  font-family: "Allura", cursive;
+  font-size: 3rem;
+  color: var(--color-yellow);
+  opacity: 0.95;
+  transform: rotate(-0.5deg);
+  margin: 0;
+}

@@ -1,0 +1,48 @@
+---
+import Signature from "@/components/Signature.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Rechtliche Angaben | karameht">
+  <section>
+    <h1>Rechtliche Angaben</h1>
+
+    <hr />
+
+    <p>
+      <strong>Transparenz als Grundprinzip.</strong> Alle rechtlichen Aspekte dieser digitalen Manufaktur – klar strukturiert
+      und ohne Kleingedrucktes. Ehrensache!
+    </p>
+
+    <blockquote>
+      Auch im Rechtlichen gilt:<br />
+      Klarheit vor Komplexität.
+    </blockquote>
+
+    <Signature prefix="Rechtlich sauber" />
+
+    <div class="legal-nav">
+      <a href="/impressum" class="legal-section">
+        <h2>Impressum</h2>
+        <p>Wer hinter karameht steht - Angaben gemäß § 5 TMG. Spoiler Mehmet Karaca.</p>
+      </a>
+
+      <a href="/datenschutz" class="legal-section">
+        <h2>Datenschutz</h2>
+        <p>Weniger Daten. Mehr Haltung - Der Umgang mit Daten.</p>
+      </a>
+
+      <a href="/urheberrecht-und-nutzungshinweise" class="legal-section">
+        <h2>Urheberrecht und Nutzungshinweise</h2>
+        <p>Liebe, Wille, Können & Gedanken – Geistiges Eigentum bleibt geschütz.</p>
+      </a>
+    </div>
+
+    <hr />
+
+    <p>
+      <em>Letzte Überarbeitung:</em>
+      {new Date().toLocaleDateString("de-DE")}
+    </p>
+  </section>
+</BaseLayout>

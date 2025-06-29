@@ -1,0 +1,44 @@
+.legal-section {
+  display: block;
+  margin: 2rem 0;
+  padding: 2rem;
+  border: var(--border-width) solid var(--border-color);
+  background: rgba(var(--border-rgb-dark), 0.02);
+  transition: all 0.3s var(--ease);
+
+  text-decoration: none;
+  color: var(--text-color);
+
+  &::after,
+  &::before {
+    display: none;
+  }
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: var(--text-color);
+  }
+
+  &:hover {
+    border-color: var(--color-yellow);
+    background: rgba(var(--border-rgb-dark), 0.05);
+
+    & h2 {
+      color: var(--color-yellow);
+    }
+  }
+
+  & h2 {
+    color: var(--text-color);
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+  }
+
+  & p {
+    margin: 0;
+    opacity: 0.8;
+  }
+}
