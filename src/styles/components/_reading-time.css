@@ -1,0 +1,53 @@
+.reading-time {
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  &:not(:has(a)) {
+    background: var(--text-color);
+    color: var(--color-dark);
+    padding: 4px 8px;
+    border-radius: 12px;
+  }
+
+  & svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--color-dark);
+  }
+
+  &__calibrate {
+    background: var(--color-yellow);
+    color: var(--color-dark);
+    padding: 4px 8px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.3s var(--ease);
+
+    &:hover {
+      background: var(--color-yellow);
+      opacity: 0.9;
+      transform: translateY(-1px);
+      color: var(--color-dark);
+      text-decoration: none;
+    }
+
+    &:focus,
+    &:active,
+    &:visited {
+      color: var(--color-dark);
+      text-decoration: none;
+    }
+
+    & svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-dark);
+    }
+  }
+}

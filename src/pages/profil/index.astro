@@ -1,0 +1,85 @@
+---
+import Signature from "@/components/Signature.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Profil | karameht">
+  <section>
+    <h1>Profil</h1>
+
+    <hr />
+
+    <h2>Du brauchst kein Profil. Du brauchst Klarheit.</h2>
+    <p>Kein Login. Kein Avatar. Kein Passwort-Reset. Nur du, dein Browser. Keine persönlichen Daten – nichts.</p>
+
+    <p>
+      <strong>Meine erste Funktion?</strong> Deine Lesezeit 💛
+    </p>
+
+    <p>
+      Du gibst nur eines preis: <strong>Wie schnell du liest.</strong>
+      Damit in den Blogbeiträgen nicht mit einem fiktiven Schnitt von 200 Wörtern pro Minute gerechnet wird – sondern mit
+      deinem echten Tempo. So kannst du abschätzen, ob du diese Zeit investieren möchtest.
+    </p>
+
+    <p>
+      Weil <strong>deine Aufmerksamkeit & Zeit</strong> kein Zufallswert ist – sondern das Wertvollste, was du hast.
+    </p>
+
+    <hr />
+
+    <div class="profil__grid">
+      <a href="/profil/lesezeit" class="profil__card">
+        <div class="profil__card-icon">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12,6 12,12 16,14"></polyline>
+          </svg>
+        </div>
+        <h3 class="profil__card-title">Lesezeit kalibrieren</h3>
+        <p class="profil__card-description">Ermittle deine persönliche Lesegeschwindigkeit</p>
+      </a>
+
+      <div class="profil__card profil__card--disabled">
+        <div class="profil__card-icon">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <h3 class="profil__card-title">Weitere Funktionen</h3>
+        <p class="profil__card-description">.. befinden sich in Manufaktur des Thalamus.</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <h3>Datenschutz & Datenspeicherung</h3>
+    <p>
+      Alles, was du hier einstellst, bleibt <strong>lokal in deinem Browser</strong> – im sogenannten LocalStorage. Es verlässt
+      niemals deinen Rechner. Keine Server, keine Cloud, keine Cookies. Wenn du deinen Verlauf löschst, ist alles wieder
+      auf null. Kein Backup. Kein Gedächtnis.
+      <strong>So funktioniert digitale Askese.</strong>
+    </p>
+
+    <Signature prefix="Datenschutz ist" name="Ehrensache!" />
+  </section>
+</BaseLayout>

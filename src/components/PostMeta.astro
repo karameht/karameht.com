@@ -1,0 +1,31 @@
+---
+export interface Props {
+  pubDate: Date;
+  category: string;
+  wordCount: number;
+  displayCategory: string;
+  variant?: "inline" | "block";
+}
+
+const { pubDate, category, wordCount, displayCategory, variant = "inline" } = Astro.props;
+const pubDateISO = pubDate.toISOString();
+---
+
+{
+  variant === "inline" ? (
+    <time data-pub-date={pubDateISO} data-display-category={displayCategory}>
+      {pubDate.toLocaleDateString("de-DE")} ·{displayCategory} ·
+      <span class="reading-time" data-word-count={wordCount}>
+        Lade...
+      </span>
+    </time>
+  ) : (
+    <div class="post__meta">
+      <time>{pubDate.toLocaleDateString("de-DE")}</time>
+      <span>{displayCategory}</span>
+      <span class="reading-time" data-word-count={wordCount}>
+        Lade...
+      </span>
+    </div>
+  )
+}

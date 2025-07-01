@@ -16,10 +16,13 @@
 
 @import "components/_posts.css";
 @import "components/_signature.css";
-@import "components/_progressBar.css";
+@import "components/_progress-bar.css";
 @import "components/_iterations.css";
-@import "components/_breathingSpace.css";
+@import "components/_breathing-space.css";
 @import "components/_codeblocks.css";
 @import "components/_table.css";
+@import "components/_reading-time.css";
 
-@import "pages/rechtlicheAngaben.css";
+@import "pages/_profile.css";
+@import "pages/_reading-time.css";
+@import "pages/_rechtliche-angaben.css";
