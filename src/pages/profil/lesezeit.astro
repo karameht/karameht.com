@@ -1,0 +1,184 @@
+---
+import Signature from "@/components/Signature.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Lesezeit kalibrieren | karameht">
+  <section>
+    <h1>Deine persönliche Lesezeit ermitteln</h1>
+
+    <hr />
+
+    <p>
+      Ich will nicht wissen, wie lange man <em>angeblich</em> braucht, um etwas zu lesen. Ich will wissen, wie <strong
+        >dein Rhythmus</strong
+      > ist. Keine Schätzung. Kein Durchschnitt. Kein „200 Wörter pro Minute". Sondern <strong>dein echtes Tempo</strong
+      > – schwarz auf weiß.
+    </p>
+
+    <h2>Wie es funktioniert?</h2>
+
+    <ul>
+      <li>Lies den Text unten in Ruhe.</li>
+      <li>Mit <strong>START</strong> beginnt die Zeit.</li>
+      <li>Mit <strong>STOP</strong> kehrt Ruhe ein.</li>
+    </ul>
+
+    <p>Und was bleibt, ist ein ehrlicher Moment – dein Lesetempo. Nicht mehr, nicht weniger.</p>
+
+    <h3>Das Beste daran?</h3>
+
+    <p>
+      Es wird <strong>nur lokal in deinem Browser</strong> gespeichert. Kein Tracking. Kein Server. Kein Zugriff von außen.
+    </p>
+
+    <p>
+      <strong>Nur du – im Einklang mit dir selbst. Und falls es dir heute noch keiner gesagt hat:</strong>
+    </p>
+
+    <Signature prefix="Du" name="bist wundervoll." />
+
+    <h3>Bereit zum starten?</h3>
+
+    <div class="reading-time__timeline-container">
+      <div class="reading-time__timeline-item">
+        <div class="reading-time__timeline-icon">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="6" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <button id="startReading" class="reading-time__timeline-button reading-time__timeline-button--start"
+          >START</button
+        >
+      </div>
+
+      <div class="reading-time__timeline-line"></div>
+
+      <div class="reading-time__reading-text" id="readingText">
+        <div class="reading-time__story-intro">
+          <h4><strong>Die Reise eines Entwicklers</strong></h4>
+
+          <div class="breathing-space breathing-space--small"></div>
+
+          <p>
+            <em
+              >„1998, ich war 10, als ich das erste Mal einen Computer in den Händen hielt. Was als Spielerei begann,
+              wurde schnell zur Leidenschaft – und die Leidenschaft zur Lebensaufgabe."</em
+            >
+          </p>
+        </div>
+
+        <div class="breathing-space breathing-space--small"></div>
+
+        <p>
+          Ich bin Mehmet Karaca, 1988 geboren, und mein Weg als Entwickler begann lange vor Google und YouTube, als der
+          Zugang zu Ressourcen für die Selbstbildung noch begrenzter war. <strong>Der Duden und Block und Stift</strong>
+          waren meine ersten „Tools", um die Welt der Programmierung zu ergründen – und das war erst der Anfang meiner Reise.
+        </p>
+
+        <h5><strong>Der Anfang: Kein Englisch, aber der Drang zu lernen</strong></h5>
+
+        <p>
+          Damals konnte ich noch kein Englisch, was das Lernen nicht gerade einfacher machte. Die meisten Bücher und
+          Foren, die ich fand, waren fast ausschließlich in Englisch, und Google als allwissende Suchmaschine gab es
+          noch nicht. Aber ich ließ mich nicht abhalten.
+        </p>
+
+        <div class="breathing-space breathing-space--small"></div>
+
+        <p><strong>Meine Werkzeuge:</strong></p>
+        <ul>
+          <li>Der Duden zur Hand</li>
+          <li>Wörter aufschreiben und übersetzen</li>
+          <li>Jeden Tag ein bisschen mehr</li>
+          <li>Geduld, Ausdauer und unstillbarer Hunger nach Wissen</li>
+        </ul>
+
+        <p>
+          Es war eine Zeit ohne die heutigen Annehmlichkeiten: Keine Video-Tutorials, keine schnellen
+          Google-Suchresultate, keine KI. Aber es gab eine Sache, die mich antrieb – die unerschütterliche Neugier und
+          der Drang, mehr zu verstehen. Die Büchereien und Lernhefte waren meine besten Freunde. Es gab keine
+          Abkürzungen, nur die konstante Herausforderung, jedes bisschen Wissen aus den begrenzten Quellen zu saugen,
+          die ich finden konnte.
+        </p>
+
+        <div class="breathing-space breathing-space--small"></div>
+
+        <h5><strong>Der kleine Mehmet und die Gurken</strong></h5>
+
+        <blockquote>
+          Ja, du hast richtig gelesen – die <strong>„Gurken"</strong>.
+        </blockquote>
+
+        <p>
+          Mein Papa hat im Wertstoffhof gearbeitet und mir die alten PCs mitgebracht, die er gefunden hatte. Ich nannte
+          sie liebevoll „Gurken", weil sie meistens nicht mehr richtig funktionierten.
+        </p>
+
+        <div class="breathing-space breathing-space--small"></div>
+
+        <p><strong>Und was machte der kleine Mehmet damit?</strong></p>
+
+        <p>
+          Er zerlegte sie, dachte, er könnte sie reparieren, um sie wieder zum Leben zu erwecken. Natürlich war das ein
+          größerer Reinfall als alles, was man sich vorstellen kann – ich habe mehr kaputt gemacht, als ich repariert
+          habe. Kurzschlüsse und Stromschläge waren meine ständigen Begleiter...
+        </p>
+
+        <div class="reading-time__story-continues">
+          <p><strong>Die Geschichte geht weiter...</strong></p>
+          <p><em>Aber das erfährst du erst, nachdem du deine Lesezeit kalibriert hast.</em></p>
+        </div>
+      </div>
+
+      <div class="reading-time__timeline-line"></div>
+
+      <div class="reading-time__timeline-item">
+        <div class="reading-time__timeline-icon">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12,6 12,12 16,14"></polyline>
+          </svg>
+        </div>
+        <button id="stopReading" class="reading-time__timeline-button reading-time__timeline-button--stop" disabled
+          >STOP</button
+        >
+      </div>
+    </div>
+
+    <div class="reading-time__result-container" id="resultContainer">
+      <h3>Dein Ergebnis:</h3>
+      <p id="resultText"></p>
+      <div class="reading-time__result-actions">
+        <button id="saveResult" class="reading-time__save-button">Lesegeschwindigkeit speichern</button>
+        <a
+          href="/mehmet-karaca/der-weg/"
+          class="reading-time__continue-story-button"
+          id="continueStory"
+          style="display: none;"
+        >
+          Den vollständigen Beitrag lesen.
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

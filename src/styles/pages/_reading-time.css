@@ -1,0 +1,218 @@
+.reading-time {
+  &__timeline-container {
+    position: relative;
+    margin: 3rem 0;
+  }
+
+  &__timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__timeline-icon {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 50%;
+    color: var(--text-color);
+    transition: all 0.3s var(--ease);
+
+    & svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  &__timeline-button {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--bg-primary);
+    border: var(--border-width) solid var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+
+    &:hover:not(:disabled) {
+      background: var(--color-yellow);
+      color: var(--bg-primary);
+      border-color: var(--color-yellow);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &--start {
+      &.active {
+        background: #10b981;
+        border-color: #10b981;
+        color: white;
+      }
+    }
+
+    &--stop {
+      &:not(:disabled) {
+        background: #ef4444;
+        border-color: #ef4444;
+        color: white;
+      }
+    }
+  }
+
+  &__timeline-line {
+    position: absolute;
+    left: 1.5rem;
+    top: 0;
+    bottom: 0;
+    width: var(--border-width);
+    background: var(--border-color);
+    z-index: 1;
+  }
+
+  &__reading-text {
+    margin: 2rem 0;
+    margin-left: 4rem;
+    padding: 2rem;
+    background: rgba(var(--border-rgb-dark), 0.02);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 8px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+
+    &--active {
+      border-color: var(--color-yellow);
+    }
+
+    & p {
+      margin-bottom: 1.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__result-container {
+    display: none;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: var(--border-width) solid #10b981;
+    border-radius: 8px;
+    text-align: center;
+
+    &--show {
+      display: block;
+    }
+
+    & h3 {
+      margin-bottom: 1rem;
+      color: #10b981;
+    }
+  }
+
+  &__wintermaerchen-intro {
+    & h4,
+    & h5 {
+      margin: 1.5rem 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    & h4 {
+      color: var(--color-yellow);
+    }
+  }
+
+  &__story-continues {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 0, 0.05);
+    border: var(--border-width) solid var(--color-yellow);
+    border-radius: 8px;
+    text-align: center;
+
+    & p {
+      margin: 0.5rem 0;
+    }
+  }
+
+  &__result-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  &__continue-story-button,
+  &__save-button {
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s var(--ease);
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+  }
+
+  &__continue-story-button {
+    background: var(--color-yellow);
+    color: var(--bg-primary);
+
+    &:hover {
+      background: #e6b800;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__save-button {
+    background: #10b981;
+    color: white;
+    margin-top: 0;
+
+    &:hover {
+      background: #059669;
+    }
+  }
+}
+
+@media (max-width: 48rem) {
+  .reading-time {
+    &__timeline-line {
+      display: none;
+    }
+
+    &__reading-text {
+      margin-left: 0;
+    }
+
+    &__result-actions {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    &__continue-story-button,
+    &__save-button {
+      width: 100%;
+      min-width: auto;
+    }
+  }
+}

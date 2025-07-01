@@ -1,4 +1,5 @@
 ---
+import PostMeta from "@/components/PostMeta.astro";
 import Signature from "@/components/Signature.astro";
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import { formatCategory } from "@/scripts/utils/formatCategory";
@@ -19,7 +20,7 @@ const post = Astro.props;
 const { Content } = await post.render();
 const category = post.data.category || "42";
 const displayCategory = formatCategory(category);
-const pubDate = post.data.pubDate.toISOString();
+const wordCount = post.body.trim().split(/\s+/).length;
 ---
 
 <BlogLayout>
@@ -30,10 +31,12 @@ const pubDate = post.data.pubDate.toISOString();
   <section>
     <article>
       <h1>{post.data.title}</h1>
-      <time data-pub-date={pubDate} data-display-category={displayCategory}>
-        {post.data.pubDate.toLocaleDateString("de-DE")} ·
-        {displayCategory}
-      </time>
+      <PostMeta
+        pubDate={post.data.pubDate}
+        category={category}
+        wordCount={wordCount}
+        displayCategory={displayCategory}
+      />
 
       <hr />
 
