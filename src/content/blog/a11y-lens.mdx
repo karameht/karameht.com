@@ -1,0 +1,185 @@
+---
+title: "Von Trust-Level-E-Mail zur Accessibility-Linse"
+description: "Wie eine kleine Idee zur großen Erkenntnis wurde. Barrierefreiheit ist gesetzlich verpflichtend – aber ethisch nicht verhandelbar."
+pubDate: 2025-08-04
+category: "knowledge"
+---
+
+import ThalamusCode from "@/components/ThalamusCode.astro";
+
+## Wie eine kleine Idee zur großen Erkenntnis wurde
+
+> Barrierefreiheit ist gesetzlich verpflichtend – aber ethisch nicht verhandelbar.
+
+## Für wen ich das wirklich baue
+
+Nicht für GitHub-Stars. Nicht für fancy Hackathons oder Dev-Showcases. Und ganz sicher nicht für Projektleiter, die „Barrierefreiheit" als Checkbox in JIRA eintragen – und nie wieder anfassen.
+
+Ich baue das für Menschen, die täglich mit Software leben müssen, die sie systematisch ausschließt.
+
+Für Menschen, die nicht klicken können. Nicht sehen. Nicht hören. Nicht lesen. Und trotzdem jeden Tag funktionieren müssen – in einer Welt, die sie vergisst.
+
+Sie helfen, pflegen, arbeiten. Sie bauen Dinge, die du benutzt. Und manchmal, arbeiten sie sogar für dich.
+
+In den Werkstätten, in denen deine Flyer, Broschüren und Giveaways entstehen. Für unter 2 € pro Stunde. Damit dein Startup auf „inklusiv" machen kann. Während dein Interface nicht mal mit der Tab-Taste bedienbar ist.
+
+> Inklusion fängt nicht beim Logo an. Sie fängt im Code an.
+
+Und wenn du glaubst, Accessibility sei „nicht priorisiert" – dann schau diesen Menschen ins Gesicht und sag es ihnen nochmal.
+
+Ich widme a11y.lens denen, die mit dem leben müssen, was andere nicht testen wollten.
+
+Denen, die im Schatten Systeme am Laufen halten. Und nie wissen, ob sie überhaupt eingeladen sind – in die digitale Welt, die du mitgestaltest.
+
+Dies ist kein Feature. Dies ist eine Mahnung. Und sie beginnt bei dir.
+
+<div class="breathing-space breathing-space--large" />
+
+## Der Moment, der alles veränderte
+
+Es war einer dieser Abende, an denen ich einfach nur coden wollte. Kein Projekt für die Welt, nur ein internes Tool – Trust-Level-E-Mail-System, Docker-Deployment, ein bisschen Homelab-Routine. Klein. Ruhig. Übersichtlich.
+
+Dann kam diese eine Zeile:
+
+<ThalamusCode formula="// Not yet accessible, TODO: a11y check" />
+
+Ein Kommentar, wie er in jedem Projekt vorkommt. Nur dass er mir nicht mehr aus dem Kopf ging.
+
+Und da war er. Rüdiger.
+
+Ich sah uns wieder im Winter – wie wir nach dem Hans-Söllner-Konzert draußen standen. Sein Rollstuhl kaputt. Keine Hilfe weit und breit. Nur ein paar Schals, meine Schnürsenkel und unsere Entschlossenheit.
+
+Wir haben die Fußstütze notdürftig gefixt. Zugfahrt. Frost. Lachen trotz allem. Und danach: wochenlanger Kampf mit der Krankenkasse, nur um ein Menschenrecht namens Mobilität zurückzubekommen.
+
+Damals fragte ich mich: Wie kann ein System so blind sein? Heute frage ich mich: Warum bauen wir Software, die genauso blind ist?
+
+Ich fing an zu recherchieren. Und wurde zum Rubber-Duck-Doer wider Willen. Ich erklärte mir selbst jeden Schritt, redete mit dem Bildschirm, fragte mich zum hundertsten Mal: "Wieso geht das nicht einfacher?" Ich baute Prototypen, verwarf Ideen, debuggte Tools, die Barrierefreiheit versprachen – und scheiterten. Und fiel dabei tiefer und tiefer in dieses Rabbit Hole.
+
+Zuerst die übliche Litanei:
+
+- Chrome Extensions
+- VSCode Plugins
+- Terminal-Scanner
+- Linter, Husky, CI/CD,
+- Checklisten
+
+Aber nichts davon fühlte sich richtig an. Zu laut. Zu spät. Zu weit weg vom Interface. Barrierefreiheit als Add-on. Nie als echtes Feature.
+
+Und irgendwann, zwischen Frust und Code, traf ich auf axe-core. Eine Engine, entwickelt von Deque Systems. Open Source. Transparent. Real. Eingesetzt in Regierungssystemen. Gebaut für Menschen, nicht für Buzzwords.
+
+Und mir war klar:
+
+> Ich will das nicht nur nutzen. Ich will es sichtbar machen. Nicht als Console-Warnung. Nicht als Checkbox. Sondern da, wo echte Entwickler hinschauen müssen: Im Interface. In Echtzeit.
+
+<div class="breathing-space breathing-space--large" />
+
+## Aus einem kleinen DevPanel wurde @karameht/a11y-lens
+
+Ich wollte:
+
+- Kein Plugin
+- Kein Nach-der-Deadline-Fix
+- Kein "Bitte nicht in Production laden"
+
+Ich wollte ein echtes Dev-Tool. Direkt im UI. Echtzeit. Ein Overlay, das gnadenlos zeigt, was andere übersehen. Impact-Level. DOM-Highlighting. Framework-Agnostik. Debug-Modus. Versteckt sich in Production – aber konfrontiert dich in Dev.
+
+Und wenn du jetzt hier sitzt und denkst, das sei nur ein weiteres Tool unter vielen – dann lies diesen Absatz zweimal. Ich habe dieses Tool nicht gebaut, weil ich es musste. Ich habe es gebaut, weil ich es nicht mehr ertragen konnte.
+
+Nicht das Ignorieren. Nicht die Lippenbekenntnisse. Nicht das systematische Aufschieben der Verantwortung. Das hier ist keine Werbung. Das ist eine stille Wut, gegossen in Code.
+
+- Ein Werkzeug, das du nicht benutzen musst – aber eines, das dich erinnern soll.
+- Erinnern an all jene, die ausgeschlossen werden. Erinnern an deinen Einfluss als Entwickler.
+- Wenn du also etwas anderes nutzt, großartig. Wenn du eigene Lösungen findest, noch besser.
+
+Aber vergiss nie:
+
+> Es geht nicht um mein Tool. Es geht um dein Bewusstsein.
+
+Danke an alle, die testen. Danke an alle, die fragen: "Kann das jeder bedienen?" Danke an alle, die verstehen, dass Barrierefreiheit kein Goodie ist, sondern eine Grundhaltung.
+
+Eure Haltung macht den Unterschied.
+
+Und ja – a11y.lens ist noch lange nicht perfekt. Aber es geht auch nicht um Perfektion. Es geht darum, Version für Version, Entscheidung für Entscheidung, Zugang zu ermöglichen.
+
+Ich selbst habe noch viele To-Dos. Die Website. Die Dokumentation. Die Demo. Sogar karameht.com selbst – sie alle müssen noch barrierefreier werden.
+
+Aber der erste Schritt ist gemacht. Der nächste folgt. Und dann der nächste. Weil es nicht um Features geht – sondern um Haltung.
+
+> Wollen wir gemeinsam die Welt ein kleines Stück zugänglicher machen?
+
+<div class="breathing-space breathing-space--large" />
+
+## NPM-Release
+
+@karameht/a11y-lens ist ab sofort auf NPM verfügbar:
+
+- NPM: [npmjs.com/package/@karameht/a11y-lens](https://npmjs.com/package/@karameht/a11y-lens)
+- Web: [a11y.karameht.com](https://a11y.karameht.com)
+- Demo: [lens.karameht.com](https://lens.karameht.com)
+
+Beta. Roh. Aber ehrlich. Und bereit für alle, die Barrierefreiheit nicht mehr aufschieben.
+
+<ThalamusCode formula="npm install @karameht/a11y-lens" />
+
+## Features im Überblick
+
+- Echtzeit-A11y-Scans (axe-core)
+- Impact-Level-Priorisierung
+- DOM-Highlighting
+- Auto-Hide in Production
+- Framework-Agnostisch (Vite, Next, Remix, Astro)
+- Developer-First UX
+
+<ThalamusCode formula="npm install @karameht/a11y-lens" />
+
+<div class="breathing-space breathing-space--large" />
+
+## Fazit
+
+Ich wollte ein Trust-System bauen. Ich bekam einen Wake-up-Call. Barrierefreiheit ist kein nettes Feature. Sie ist ein digitaler Zugangscode zur Gesellschaft. Und a11y.lens ist mein Beitrag dazu. Wenn du ein Tool brauchst, das dir zeigt, wo du hinschauen musst – auch wenn's weh tut – installier es.
+
+**PS:**
+
+Wenn du Feedback hast – ich freue mich über jede Rückmeldung. Eröffne ein Issue auf GitHub, teile Ideen, stelle Fragen. Lass uns gemeinsam lernen, besser werden und Barrieren abbauen.
+
+Denn es gibt schon genug Barrieren da draußen – digitale, soziale, strukturelle. Grenzen, die uns trennen. Systeme, die Menschen klein halten. Interfaces, die nur für einen Teil der Welt gemacht sind.
+
+Vielleicht ist jetzt die Zeit, etwas zu ändern. Nicht morgen. Jetzt.
+
+<div class="breathing-space breathing-space--large" />
+
+## Was bleibt
+
+Manchmal braucht es keine Roadmap, sondern ein Innehalten. Keinen weiteren Pull Request, sondern einen Perspektivwechsel.
+
+Denn:
+
+<blockquote>
+<ul>
+<li>Barrierefreiheit ist gesetzlich verpflichtend – aber ethisch nicht verhandelbar.</li>
+<li>Die größte Inkompatibilität unserer Zeit ist nicht Software – es ist Ignoranz.</li>
+<li>Wir reden von UX und vergessen, dass manche nie „X" drücken können.</li>
+<li>Es gibt Menschen, die durch deine App navigieren müssen – mit den Augen, die sie nicht haben.</li>
+</ul>
+
+</blockquote>
+
+Wir leben in einer Welt, die lieber Apps optimiert als Leben zugänglich macht.
+
+> Ein System, das Menschen ausschließt, ist nicht fehlerhaft. Es ist unmenschlich.
+
+Ich könnte über jeden dieser Sätze hunderte Beiträge schreiben. Vielleicht tue ich das irgendwann. Aber jetzt? Lies sie noch einmal. Langsam.
+
+Und dann frag dich: Wie fühlt es sich an, wenn man nicht lesen kann? Wie klingt eine Welt, die du nie hörst? Wie lebt man, wenn man kein Wort sagen kann – nicht auf der Straße, nicht im Code? Wie sieht dein Interface aus, wenn du es nie sehen wirst?
+
+Du musst nicht alles reparieren. Aber du kannst anfangen, etwas zu ändern. Heute. In deinem Projekt. Mit deinem Team. In deinem Kopf.
+
+Denn am Ende geht es nicht um Tools. Es geht darum, wem du Zutritt gewährst – und wen du draußen stehen lässt.
+
+> Denn am Ende geht es nicht um Tools. Es geht darum, Menschen, die die Gesellschaft ausschließt, Türen zu öffnen, damit sie nicht nur am Rande stehen – sondern Teil dieser Gesellschaft werden.
+
+Du nennst es Feature. Für andere ist es Freiheit. Und jedes Mal, wenn du Barrierefreiheit ignorierst, schließt du eine Tür – vielleicht die einzige. Nicht jeder kann klicken, wischen, hören, lesen. Aber jeder verdient Zugang. Dein Code ist kein Produkt. Er ist ein Versprechen. Mach es wahr.
+
+<ThalamusCode formula="Bleib wach. Bleib menschlich." />
+
+Alles weitere zu a11y.lens findest du unter: [npmjs.com/package/@karameht/a11y-lens](https://npmjs.com/package/@karameht/a11y-lens)
