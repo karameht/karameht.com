@@ -1,10 +1,19 @@
 ---
 import Signature from "@/components/Signature.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+const siteUrl = "https://karameht.com";
+const pageUrl = `${siteUrl}/profil/`;
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "Profil | karameht",
+  url: pageUrl,
+};
 ---
 
-<BaseLayout title="Profil | karameht">
+<BaseLayout title="Profil | karameht" url={pageUrl}>
   <section>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
     <h1>Profil</h1>
 
     <hr />

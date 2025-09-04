@@ -7,7 +7,7 @@ export interface Props {
   variant?: "inline" | "block";
 }
 
-const { pubDate, category, wordCount, displayCategory, variant = "inline" } = Astro.props;
+const { pubDate, wordCount, displayCategory, variant = "inline" } = Astro.props as Props;
 const pubDateISO = pubDate.toISOString();
 ---
 

@@ -1,9 +1,15 @@
 ---
 import Signature from "@/components/Signature.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+const siteUrl = "https://karameht.com";
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl }],
+};
 ---
 
-<BaseLayout>
+<BaseLayout url={siteUrl}>
   <p>Das Siegel der Unnachahmlichkeit in der</p>
   <h1>Manufaktur für digitale Askese</h1>
 
@@ -68,5 +74,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     um geschrieben zu werden, wenn sie längst gedacht wurden.
   </blockquote>
 
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <Signature />
 </BaseLayout>

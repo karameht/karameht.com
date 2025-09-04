@@ -1,0 +1,11 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+  width?: string | number;
+  loading?: "lazy" | "eager";
+}
+const { src, alt, width = "100%", loading = "lazy" } = Astro.props as Props;
+---
+
+<img src={src} alt={alt} width={width} loading={loading} />

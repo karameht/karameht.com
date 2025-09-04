@@ -1,9 +1,21 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+const siteUrl = "https://karameht.com";
+const pageUrl = `${siteUrl}/urheberrecht-und-nutzungshinweise/`;
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Rechtliche Angaben", item: `${siteUrl}/rechtliche-angaben/` },
+    { "@type": "ListItem", position: 3, name: "Urheberrecht und Nutzungshinweise", item: pageUrl },
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout url={pageUrl} title="Urheberrecht und Nutzungshinweise | karameht">
   <section>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <h1>Urheberrecht und Nutzungshinweise</h1>
     <hr />
     <h2>Hey, jetzt mal persönlich…</h2>
