@@ -1,0 +1,8 @@
+---
+export interface Props {
+  size?: "small" | "medium" | "large";
+}
+const { size = "large" } = Astro.props as Props;
+---
+
+<div class={`breathing-space breathing-space--${size}`}></div>

@@ -7,10 +7,48 @@ body {
   font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-yellow);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-120%);
+  background: var(--color-yellow);
+  color: var(--color-dark);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 0 0.25rem 0;
+  text-decoration: none;
+  z-index: 2000;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 hr {
   border: none;
   height: var(--border-width);
   background: var(--border-color);
   opacity: 0.5;
   margin: 2rem auto;
+}
+
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden;
+  height: 100%;
 }

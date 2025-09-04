@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+const pageProps = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout {...pageProps}>
   <div class="progress-bar">
     <div class="progress-bar__fill"></div>
   </div>

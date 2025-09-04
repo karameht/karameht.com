@@ -1,6 +1,5 @@
 ---
 import Signature from "@/components/Signature.astro";
-
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { formatCategory } from "@/scripts/utils/formatCategory";
 import { getCollection } from "astro:content";
@@ -9,10 +8,21 @@ const allPosts = await getCollection("blog");
 const mehmetPosts = allPosts
   .filter((post) => post.data.category === "mehmet-karaca")
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+const siteUrl = "https://karameht.com";
+const pageUrl = `${siteUrl}/geselle/`;
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Der Geselle", item: pageUrl },
+  ],
+};
 ---
 
-<BaseLayout title="Der Geselle | karameht">
+<BaseLayout title="Der Geselle | karameht" url={pageUrl}>
   <section>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <h1>Der Geselle</h1>
 
     <hr />

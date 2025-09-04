@@ -13,6 +13,6 @@
 @media (width <= 48rem) {
   .main {
     margin: 0;
-    padding: 1rem 3rem;
+    padding: 1rem 3rem calc(1rem + env(safe-area-inset-bottom));
   }
 }

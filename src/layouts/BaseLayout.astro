@@ -4,24 +4,72 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import "@/styles/karameht.css";
 
+interface LayoutProps {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+  noIndex?: boolean;
+  structuredData?: boolean;
+}
 const {
   title = "karameht | Manufaktur für digitale Askese",
   description = "Das Siegel der Unnachahmlichkeit in der Manufaktur für digitale Askese ... die Schöpfung von [ˈʁɛflɛksi̯oːn]",
   image = "https://karameht.com/og-image.png",
   url = "https://karameht.com/",
-} = Astro.props;
+  noIndex = false,
+  structuredData = true,
+} = Astro.props as LayoutProps;
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  url,
+  isPartOf: {
+    "@type": "WebSite",
+    name: "karameht",
+    url: "https://karameht.com/",
+  },
+  primaryImageOfPage: image,
+  description,
+};
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "karameht",
+  url: "https://karameht.com/",
+  logo: {
+    "@type": "ImageObject",
+    url: image,
+  },
+  sameAs: ["https://www.npmjs.com/~karameht", "https://github.com/karameht"],
+};
+const siteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "karameht",
+  url: "https://karameht.com/",
+};
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Mehmet Karaca",
+  url: "https://karameht.com/",
+  image,
+  sameAs: ["https://www.npmjs.com/~karameht", "https://github.com/karameht"],
+};
 ---
 
 <html lang="de" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
 
     <!-- SEO Meta Tags -->
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
     <meta name="author" content="Mehmet Karaca" />
     <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
 
@@ -46,6 +94,23 @@ const {
     <!-- Canonical URL -->
     <link rel="canonical" href={url} />
 
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://observe.karameht.com" crossorigin />
+    <link rel="dns-prefetch" href="//observe.karameht.com" />
+    <link rel="alternate" type="application/rss+xml" title="karameht RSS" href="/rss.xml" />
+
+    <!-- Structured Data -->
+    {
+      structuredData && (
+        <>
+          <script is:inline type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
+          <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+          <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+          <script is:inline type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+        </>
+      )
+    }
+
     <!-- Matomo Analytics - observe the sytsem -->
     <script>
       var _paq = (window._paq = window._paq || []);
@@ -67,9 +132,10 @@ const {
     </script>
   </head>
   <body class="grid">
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
     <Header />
     <Aside />
-    <main class="main">
+    <main class="main" id="main">
       <section class="main__section">
         <slot />
       </section>

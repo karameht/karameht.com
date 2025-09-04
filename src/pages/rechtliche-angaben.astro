@@ -1,10 +1,21 @@
 ---
 import Signature from "@/components/Signature.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+const siteUrl = "https://karameht.com";
+const pageUrl = `${siteUrl}/rechtliche-angaben/`;
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Rechtliche Angaben", item: pageUrl },
+  ],
+};
 ---
 
-<BaseLayout title="Rechtliche Angaben | karameht">
+<BaseLayout title="Rechtliche Angaben | karameht" url={pageUrl}>
   <section>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <h1>Rechtliche Angaben</h1>
 
     <hr />

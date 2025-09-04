@@ -29,12 +29,14 @@
     background: transparent;
     color: var(--text-color);
     font-family: var(--font-code);
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem);
     line-height: 1.6;
     text-align: center;
     display: block;
     position: relative;
     z-index: 1;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   &.astro-code {
@@ -44,6 +46,12 @@
   &[data-language="text"] {
     background: rgba(var(--border-rgb-dark), 0.02);
   }
+}
+
+.code-block pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 pre.astro-code {
@@ -56,7 +64,7 @@ pre[class*="language-"] {
 
 @media (width <= 48rem) {
   .code-block {
-    padding: 2rem;
+    padding: 1.5rem;
     margin: 2rem 0;
 
     &::before {

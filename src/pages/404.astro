@@ -4,7 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 Astro.response.status = 404;
 ---
 
-<BaseLayout title="Seite nicht gefunden | karameht">
+<BaseLayout title="Seite nicht gefunden | karameht" noIndex={true} structuredData={false}>
   <section>
     <div class="not-found">
       <h1>404</h1>

@@ -21,9 +21,48 @@ const { Content } = await post.render();
 const category = post.data.category || "42";
 const displayCategory = formatCategory(category);
 const wordCount = post.body.trim().split(/\s+/).length;
+const siteUrl = "https://karameht.com";
+const canonicalUrl = `${siteUrl}/${category}/${post.slug}/`;
+const ogImage = "https://karameht.com/og-image.png";
+const pageTitle = post.data.title;
+const pageDescription = post.data.description ?? "";
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: pageTitle,
+  description: pageDescription,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: post.data.pubDate.toISOString(),
+  mainEntityOfPage: canonicalUrl,
+  image: [ogImage],
+  author: { "@type": "Person", name: "Mehmet Karaca", url: siteUrl },
+  publisher: {
+    "@type": "Organization",
+    name: "karameht",
+    logo: { "@type": "ImageObject", url: ogImage },
+    sameAs: ["https://www.npmjs.com/~karameht", "https://github.com/karameht"],
+  },
+  articleSection: displayCategory,
+  wordCount,
+  isPartOf: {
+    "@type": "Blog",
+    name: "karameht Blog",
+    url: `${siteUrl}/archiv/`,
+  },
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Archiv", item: `${siteUrl}/archiv/` },
+    { "@type": "ListItem", position: 3, name: displayCategory, item: `${siteUrl}/${category}/` },
+    { "@type": "ListItem", position: 4, name: pageTitle, item: canonicalUrl },
+  ],
+};
 ---
 
-<BlogLayout>
+<BlogLayout title={pageTitle} description={pageDescription} image={ogImage} url={canonicalUrl}>
   <div class="progress-bar">
     <div class="progress-fill"></div>
   </div>
@@ -40,6 +79,8 @@ const wordCount = post.body.trim().split(/\s+/).length;
 
       <hr />
 
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
       <Content />
       <Signature />
     </article>

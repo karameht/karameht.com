@@ -12,9 +12,45 @@ const postsWithWordCount = sortedPosts.map((post) => ({
   ...post,
   wordCount: post.body.trim().split(/\s+/).length,
 }));
+const siteUrl = "https://karameht.com";
+const archiveUrl = `${siteUrl}/archiv/`;
+const itemListElements = postsWithWordCount.map((post, index) => {
+  const category = post.data.category || "42";
+  return {
+    "@type": "ListItem",
+    position: index + 1,
+    url: `${siteUrl}/${category}/${post.slug}/`,
+    name: post.data.title,
+    datePublished: post.data.pubDate.toISOString(),
+  };
+});
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Das Archiv | karameht",
+  url: archiveUrl,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: itemListElements,
+  },
+};
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "karameht Blog",
+  url: archiveUrl,
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Archiv", item: archiveUrl },
+  ],
+};
 ---
 
-<BaseLayout title="Das Archiv | karameht">
+<BaseLayout title="Das Archiv | karameht" url={archiveUrl}>
   <section>
     <h1>Das Archiv</h1>
 
@@ -29,6 +65,10 @@ const postsWithWordCount = sortedPosts.map((post) => ({
 
     <Signature prefix="Zu Ende gedachte Erkentnisse" />
     <br />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
     <div class="posts">
       {
