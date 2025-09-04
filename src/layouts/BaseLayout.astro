@@ -64,7 +64,7 @@ const personSchema = {
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
 
     <!-- SEO Meta Tags -->
@@ -93,6 +93,11 @@ const personSchema = {
 
     <!-- Canonical URL -->
     <link rel="canonical" href={url} />
+
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://observe.karameht.com" crossorigin />
+    <link rel="dns-prefetch" href="//observe.karameht.com" />
+    <link rel="alternate" type="application/rss+xml" title="karameht RSS" href="/rss.xml" />
 
     <!-- Structured Data -->
     {
@@ -127,9 +132,10 @@ const personSchema = {
     </script>
   </head>
   <body class="grid">
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
     <Header />
     <Aside />
-    <main class="main">
+    <main class="main" id="main">
       <section class="main__section">
         <slot />
       </section>

@@ -166,11 +166,14 @@
     }
 
     a {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 500;
       color: var(--text-color);
       text-decoration: none;
       transition: color 0.3s var(--ease);
+      display: inline-block;
+      padding: 0.5rem 0.25rem;
+      min-height: 2.75rem;
 
       &:hover {
         color: rgba(var(--border-rgb-dark), 0.7);
@@ -182,8 +185,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3rem;
+    height: 3rem;
     color: var(--text-color);
     text-decoration: none;
     border-radius: 50%;
@@ -253,7 +256,7 @@
       align-items: flex-end;
       justify-content: flex-end;
       height: calc(100vh - var(--header-height));
-      padding: 1rem 4rem;
+      padding: 1rem 4rem calc(1rem + env(safe-area-inset-bottom));
       text-align: right;
       border-top: var(--border-width) solid var(--border-color);
 

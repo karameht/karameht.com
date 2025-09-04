@@ -4,8 +4,18 @@ export interface Props {
   alt: string;
   width?: string | number;
   loading?: "lazy" | "eager";
+  srcset?: string;
+  sizes?: string;
 }
-const { src, alt, width = "100%", loading = "lazy" } = Astro.props as Props;
+const { src, alt, width = "100%", loading = "lazy", srcset, sizes } = Astro.props as Props;
 ---
 
-<img src={src} alt={alt} width={width} loading={loading} />
+<img
+  src={src}
+  alt={alt}
+  width={width}
+  loading={loading}
+  srcset={srcset}
+  sizes={sizes}
+  style="max-width: 100%; height: auto;"
+/>
