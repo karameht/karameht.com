@@ -1,0 +1,293 @@
+.hero {
+  margin: 0 0 2rem 0;
+  position: relative;
+}
+
+.hero__kicker {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+}
+
+.hero__title {
+  margin: 0.25rem 0 0.75rem 0;
+  /* Bigger headline than global h1 on home */
+  font-size: clamp(1.75rem, 1.1rem + 3vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.hero__title-line {
+  display: inline;
+}
+
+@media (width > 48rem) {
+  .hero__title-line {
+    display: block;
+  }
+
+  .hero__title-line--top {
+    margin-bottom: 0.35rem;
+  }
+
+  .hero__title {
+    font-size: clamp(2.25rem, 1.25rem + 3.5vw, 3.5rem);
+    color: var(--color-yellow);
+  }
+}
+
+.hero__subline {
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.hero__rule {
+  width: 6rem;
+  height: 1px;
+  background: var(--border-color);
+  opacity: 0.35;
+  margin: 0.5rem 0 0.75rem 0;
+}
+
+@media (width > 48rem) {
+  .hero__rule {
+    width: 8rem;
+    margin: 0.75rem 0 1rem 0;
+  }
+}
+
+.hero__intro {
+  margin: 4rem 0;
+}
+
+.hero__intro p {
+  margin: 0.5rem 0 0 0;
+}
+
+.hero__avatar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+  display: block;
+  margin: 0.5rem 0 1rem 0;
+}
+
+@media (width <= 48rem) {
+}
+
+/* Sections */
+.section {
+  margin: 2rem 0;
+}
+
+.section__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section__action {
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Stream: horizontal scroll on mobile */
+.stream {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 85%;
+  gap: 1rem;
+}
+
+/* Calibrate reading time section */
+.calibrate {
+  border: var(--border-width) solid var(--border-color);
+  border-left: 4px solid var(--color-yellow);
+  background: rgba(var(--border-rgb-dark), 0.04);
+  padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+}
+
+.calibrate__eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  background: var(--color-yellow);
+  padding: 0.2rem 0.5rem;
+}
+
+.calibrate__lead {
+  margin: 0.25rem 0 0.75rem 0;
+}
+
+.calibrate__benefits {
+  margin: 0 0 1rem 1.25rem;
+}
+
+.calibrate__benefits li::marker {
+  color: var(--color-yellow);
+}
+
+.calibrate__more {
+  margin: 0 0 0.75rem 0;
+  opacity: 0.9;
+}
+
+/* Profile section styling */
+.profile .calibrate {
+  margin-bottom: 0.75rem;
+}
+
+.profile__note {
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
+}
+
+.profile__note p {
+  margin: 0.5rem 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.9rem;
+  border: var(--border-width) solid var(--border-color);
+  text-decoration: none;
+  position: relative;
+}
+
+.button::after {
+  display: none !important;
+}
+
+.button--primary {
+  background: var(--color-yellow);
+  border-color: var(--color-yellow);
+  color: var(--color-dark);
+}
+
+.button--primary:hover {
+  background: #e2c300;
+  border-color: #e2c300;
+  color: var(--color-dark);
+}
+
+/* Ensure button text stays black in all states */
+.button--primary:link,
+.button--primary:visited,
+.button--primary:hover,
+.button--primary:active {
+  color: var(--color-dark);
+  text-decoration: none;
+}
+
+.stream--scroll {
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stream__item {
+  scroll-snap-align: start;
+}
+
+/* Compact cards for home */
+.post.post--compact,
+.iteration.iteration--compact {
+  margin: 0;
+  padding: 1rem 1.25rem;
+}
+
+.post.post--compact .post__description,
+.iteration.iteration--compact .iteration__summary {
+  margin-top: 0.5rem;
+}
+
+/* Tablet */
+@media (48rem < width <= 64rem) {
+  .stream {
+    grid-auto-columns: calc(50% - 0.5rem);
+  }
+}
+
+/* Desktop */
+@media (width > 64rem) {
+  .stream {
+    grid-auto-columns: calc(33.333% - 0.67rem);
+  }
+}
+
+/* Journey section */
+.journey {
+  margin: 2rem 0;
+}
+
+.journey__list {
+  margin: 1rem 0 1rem 0;
+  padding-left: 1.25rem;
+}
+
+.journey__list li {
+  margin: 0.5rem 0;
+}
+
+/* Stack spacing for 'Aktuell' */
+.posts.posts--stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* Hero 1/2 layout and overrides */
+.hero__grid {
+  display: block;
+}
+
+.hero__media {
+  margin: 0.5rem 0 0 0;
+}
+
+/* Override avatar sizing and spacing */
+.hero__avatar {
+  width: 9rem;
+  height: 9rem;
+  margin: 0.5rem 0 0 0;
+}
+
+/* Spacing below hero grid previously used by CTAs removed */
+
+/* Split 1/2 — 1/2 on tablet/desktop */
+@media (width > 48rem) {
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .hero__media {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+  }
+
+  .hero__avatar {
+    width: min(22rem, 90%);
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}

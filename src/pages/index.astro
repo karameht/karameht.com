@@ -1,78 +1,207 @@
 ---
+import BreathingSpace from "@/components/BreathingSpace.astro";
+import PostMeta from "@/components/PostMeta.astro";
 import Signature from "@/components/Signature.astro";
+import ThalamusCode from "@/components/ThalamusCode.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { formatCategory } from "@/scripts/utils/formatCategory";
+import { getCollection } from "astro:content";
+
 const siteUrl = "https://karameht.com";
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl }],
 };
+
+const allPosts = await getCollection("blog");
+const latestPosts = allPosts
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 3)
+  .map((post) => ({
+    ...post,
+    wordCount: post.body.trim().split(/\s+/).length,
+    category: post.data.category || "42",
+  }));
+
+const allIterations = await getCollection("iteration");
+const latestIteration = allIterations.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+)[0];
 ---
 
 <BaseLayout url={siteUrl}>
-  <p>Das Siegel der Unnachahmlichkeit in der</p>
-  <h1>Manufaktur für digitale Askese</h1>
+  <section class="hero">
+    <div class="hero__grid">
+      <div class="hero__content">
+        <p class="hero__kicker">Das Siegel der Unnachahmlichkeit in der</p>
+        <div class="hero__rule" aria-hidden="true"></div>
+        <h1 class="hero__title">
+          <span class="hero__title-line hero__title-line--top">Manufaktur für</span>
+          <span class="hero__title-line hero__title-line--bottom">digitale Askese</span>
+        </h1>
+        <div class="hero__rule" aria-hidden="true"></div>
+        <p class="hero__subline">… die Schöpfung von [ˈʁɛflɛksi̯oːn]</p>
+      </div>
+      <div class="hero__media">
+        <img
+          class="hero__avatar"
+          src="/mehmet-karaca.jpg"
+          alt="Mehmet Karaca"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+    <div class="hero__intro">
+      <p>
+        Ich bin <a href="/geselle">Mehmet Karaca – Geselle</a> meiner eigenen
+        <a href="/manufaktur">Manufaktur für digitale Askese</a>.
+      </p>
+      <p>
+        Über zwei Jahrzehnte zwischen Verantwortung, Code, Design und Markenentwicklung haben mich geprägt – hier
+        verdichte ich diese Erfahrung zu einem Archiv für digitale Askese. Jede Zeile ist ein Werkstück.
+      </p>
+      <br />
+      <p>
+        Im Kopf geformt, vom Herzen 💛 geschmiedet – für Entwickler, Designer und alle, die genug vom digitalen
+        Überfluss haben <em>- niedergeschrieben</em>...
+      </p>
+    </div>
+  </section>
 
-  <hr />
+  <BreathingSpace size="large" />
 
-  <p><em>… die Schöpfung von [ˈʁɛflɛksi̯oːn] – im Kopf geformt, vom Herzen geschmiedet.</em></p>
+  <section class="section" aria-labelledby="aktuell-heading">
+    <div class="section__header">
+      <h2 id="aktuell-heading">Aktuell</h2>
+      <a class="section__action" href="/archiv">Alle Beiträge →</a>
+    </div>
+    <div class="posts">
+      {
+        latestPosts.map((post) => {
+          const displayCategory = formatCategory(post.category);
+          return (
+            <article class="post">
+              <h3 class="post__title">
+                <a href={`/${post.category}/${post.slug}/`}>{post.data.title}</a>
+              </h3>
+              <PostMeta
+                pubDate={post.data.pubDate}
+                category={post.category}
+                wordCount={post.wordCount}
+                displayCategory={displayCategory}
+                variant="block"
+              />
+              <p class="post__description">{post.data.description}</p>
+            </article>
+          );
+        })
+      }
+    </div>
+  </section>
 
-  <p>
-    <strong>Fortschritt hat viele Namen.</strong> Einer davon ist Abschied. Einer ist Erbe. Ein Erbe des Könnens – geschmiedet
-    über Generationen. Von Handwerksmeistern, Dichtern und Denkern, Künstlern und Visionären. Vom Amboss zur Architektur.
-    Vom Meißel zum Mauszeiger. Und heute:
-  </p>
+  <BreathingSpace />
 
-  <blockquote>meistens, lieblose Kunst, KI & leere Köpfe.</blockquote>
+  <section class="section profile" aria-labelledby="profil-heading">
+    <div class="section__header">
+      <h2 id="profil-heading">Profil</h2>
+      <a class="section__action" href="/profil">Zum Profil →</a>
+    </div>
+    <div class="calibrate" aria-labelledby="calibrate-heading">
+      <div class="calibrate__eyebrow">
+        <span class="badge">Feature</span>
+      </div>
+      <h3 id="calibrate-heading">Lesezeit kalibrieren</h3>
+      <p class="calibrate__lead">
+        ⏱️ In etwa einer Minute misst du dein Lesetempo – damit alle Lesezeiten hier zu dir passen.
+      </p>
+      <ul class="calibrate__benefits">
+        <li>Eigene statt Durchschnitts-Lesezeit</li>
+        <li>Realistische Schätzungen in allen Beiträgen</li>
+        <li>Basis für zeitbasierte Features</li>
+      </ul>
+      <a class="button button--primary" href="/profil/lesezeit">Jetzt kalibrieren →</a>
+    </div>
 
-  <p>
-    Doch technischer Fortschritt geschieht nicht im Vakuum. Er steht auf den Schultern jener, die mit harter Arbeit,
-    klarem Blick und stiller Größe den Weg bereitet haben.
-  </p>
+    <div class="profile__note">
+      <p>
+        Du brauchst kein Profil. Du bekommst Klarheit. Kein Login. Kein Avatar. Kein Passwort-Reset. Nur du, dein
+        Browser. Keine persönlichen Daten – nichts. Features, die dir helfen, weil deine Aufmerksamkeit & Zeit kein
+        Zufallswert ist – sondern das Wertvollste, was du hast.
+      </p>
 
-  <blockquote>
-    Ohne sie – keine Idee. Kein System.<br />
-    Kein Fundament für die Zeiten von heute.
-  </blockquote>
+      <p>
+        Mehr zum Warum über das erste Feature: <a href="/knowledge/von-der-stoppuhr-zur-wahrheit/"
+          >Von der Stoppuhr zur Wahrheit</a
+        >
+      </p>
+    </div>
+  </section>
 
-  <p>
-    Ich erkenne den Wert ihrer Arbeit. Ich lerne aus ihrem Vermächtnis. Ich übertrage ihre Prinzipien in meine
-    Entwicklung. Nicht aus Nostalgie – sondern aus Respekt.
-  </p>
+  <BreathingSpace />
 
-  <p>Und weil ich weiß:</p>
+  <section class="section" aria-labelledby="iterationen-heading">
+    <div class="section__header">
+      <h2 id="iterationen-heading">Iterationen</h2>
+      <a class="section__action" href="/iterationen">Alle Iterationen →</a>
+    </div>
+    {
+      latestIteration && (
+        <article class="iteration">
+          <div class="iteration__meta">
+            <span class={`iteration__type iteration__type--${latestIteration.data.type}`}>
+              {latestIteration.data.type}
+            </span>
+            <span class="iteration__version">{latestIteration.data.version}</span>
+            <time class="iteration__date">{latestIteration.data.date.toLocaleDateString("de-DE")}</time>
+          </div>
+          <h3 class="iteration__title">{latestIteration.data.title}</h3>
+          <p class="iteration__summary">{latestIteration.data.summary}</p>
+        </article>
+      )
+    }
+  </section>
 
-  <blockquote>
-    Zukunft entsteht nicht aus Trends.<br />
-    Zukunft entsteht aus Herkunft.<br />
-    Zukunft entsteht aus Notwendigkeit.
-  </blockquote>
+  <BreathingSpace />
 
-  <p>
-    <strong>Ich bin Softwareentwickler.</strong> Aber ich schreibe nicht nur Code. Ich forme Systeme. Ich schärfe Identität.
-    Ich baue Klarheit. Als Maßanzug für die Gestaltung digitaler Anziehungspunkte.
-  </p>
+  <section class="journey" aria-labelledby="journey-heading">
+    <h2 id="journey-heading">Mehmet Karaca – Die Reise eines Entwicklers</h2>
+    <p>Um es in den ehrlichsten Worten zu sagen, die ich finde:</p>
 
-  <p>
-    <em>Kurz gesagt:</em> Ein Versprechen an mich selbst – das Bindeglied zu sein zwischen sichtbarem und verständlichem
-    Code. Ein Raum zu schaffen, in dem digitale Schöpfung aus Reflexion entsteht.
-  </p>
+    <blockquote>
+      Eine Zeit lang war ich nur Sohn meiner Eltern.<br /><br />
+      Dann Helfer in Dönerbuden und Gemüseläden. Zeitarbeiter, Bauhelfer, Lehrling. Irgendwo dazwischen Freelancer, Nerd,
+      IT-Enthusiast.<br /><br />
+      Heute bin ich Entwickler mit Weitblick – und irgendwann bin ich tot.
+    </blockquote>
 
-  <hr />
+    <p>Warum so radikal? Weil die Frage bleibt:</p>
 
-  <p>Dies ist meine Manufaktur.</p>
+    <ThalamusCode formula="Was bleibt von dir, wenn alles Überflüssige verschwindet" />
 
-  <p>
-    Ein Raum, in dem über zwei Jahrzehnte Entwicklung, Scheitern und Erkenntnis zu Substanz verschmolzen sind.
-    Verdichtet zu einem Ort für Klarheit, Haltung und digitale Reflexion. Alles, was ich gelernt, gelebt und gedacht
-    habe – findest du hier. Nicht als fertiges Produkt. Sondern als Einladung, mitzudenken.
-  </p>
+    <p>
+      Mit dieser Frage beschäftige ich mich seit Jahrzehnten. Was du hier findest, geht über Technik hinaus: Code,
+      Design und Markenentwicklung treffen auf Herz, Verstand und sozialkritisches Denken. Unter dem Rahmen <strong
+        >Thalamus – Poesie extrem codiert</strong
+      > verdichte ich all das in Texte und Systeme.
+    </p>
 
-  <blockquote>
-    Denn manche Worte brauchen Zeit, Systeme Reife – <br />
-    und manche Gedanken den richtigen Moment,<br />
-    um geschrieben zu werden, wenn sie längst gedacht wurden.
-  </blockquote>
+    <p>
+      Denn <em>karameht</em> begann nicht mit einem Konzept, sondern mit einem Prozess in mir – gewachsen auf den Fundamenten:
+    </p>
+
+    <ul class="journey__list">
+      <li><a href="/mehmet-karaca/askese-teil-1/"><strong>Hard Reset</strong></a></li>
+      <li><a href="/mehmet-karaca/askese-teil-2/"><strong>Reduktion ist Klarheit</strong></a></li>
+      <li><a href="/mehmet-karaca/askese-teil-3/"><strong>Return Identity()</strong></a></li>
+    </ul>
+
+    <p>
+      Und wo alles begann: im <a href="/mehmet-karaca/der-weg/">Kinderzimmer</a>.
+    </p>
+  </section>
 
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <Signature />
