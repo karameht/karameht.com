@@ -70,7 +70,7 @@ const breadcrumbSchema = {
             <line x1="12" y1="6" x2="12" y2="12"></line>
           </svg>
         </div>
-        <button id="startReading" class="reading-time__timeline-button reading-time__timeline-button--start btn"
+        <button id="startReading" type="button" class="reading-time__timeline-button reading-time__timeline-button--start btn" aria-label="Lesezeit starten"
           >START</button
         >
       </div>
@@ -172,17 +172,17 @@ const breadcrumbSchema = {
             <polyline points="12,6 12,12 16,14"></polyline>
           </svg>
         </div>
-        <button id="stopReading" class="reading-time__timeline-button reading-time__timeline-button--stop btn" disabled
+        <button id="stopReading" type="button" class="reading-time__timeline-button reading-time__timeline-button--stop btn" aria-label="Lesezeit stoppen" disabled
           >STOP</button
         >
       </div>
     </div>
 
-    <div class="reading-time__result-container" id="resultContainer">
+    <div class="reading-time__result-container" id="resultContainer" role="status" aria-live="polite" aria-atomic="true">
       <h3>Dein Ergebnis:</h3>
       <p id="resultText"></p>
       <div class="reading-time__result-actions">
-        <button id="saveResult" class="reading-time__save-button btn btn--success">Lesegeschwindigkeit speichern</button
+        <button id="saveResult" type="button" class="reading-time__save-button btn btn--success">Lesegeschwindigkeit speichern</button
         >
         <a
           href="/mehmet-karaca/der-weg/"

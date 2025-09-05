@@ -3,7 +3,13 @@
 ---
 
 <div class="header__actions">
-  <a href="https://github.com/karameht" class="header__icons" target="_blank" rel="noopener noreferrer">
+  <a
+    href="https://github.com/karameht"
+    class="header__icons"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="GitHub (öffnet in neuem Tab)"
+  >
     <svg
       width="24"
       height="24"
@@ -20,7 +26,7 @@
     </svg>
   </a>
 
-  <a href="/rss.xml" class="header__icons" target="_blank">
+  <a href="/rss.xml" class="header__icons" target="_blank" rel="noopener noreferrer" aria-label="RSS (öffnet in neuem Tab)">
     <svg
       width="24"
       height="24"
@@ -37,7 +43,7 @@
     </svg>
   </a>
 
-  <a href="/profil" class="header__icons">
+  <a href="/profil" class="header__icons" aria-label="Zum Profil">
     <svg
       width="24"
       height="24"
@@ -53,7 +59,15 @@
     </svg>
   </a>
 
-  <button class="header__menu-toggle" id="menuToggle">
+  <button
+    class="header__menu-toggle"
+    id="menuToggle"
+    type="button"
+    aria-haspopup="true"
+    aria-controls="mobileNav"
+    aria-expanded="false"
+    aria-label="Menü öffnen"
+  >
     <span></span>
     <span></span>
     <span></span>

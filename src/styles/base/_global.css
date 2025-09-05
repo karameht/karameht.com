@@ -23,10 +23,11 @@ body {
 }
 
 .skip-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateY(-120%);
+  position: fixed;
+  top: 0.5rem;
+  right: 0.75rem;
+  left: auto;
+  transform: translateY(-200%);
   background: var(--color-yellow);
   color: var(--color-dark);
   padding: 0.5rem 0.75rem;
@@ -35,8 +36,25 @@ body {
   z-index: 2000;
 }
 
+.skip-link:link,
+.skip-link:visited,
+.skip-link:hover,
+.skip-link:active {
+  color: var(--color-dark) !important;
+  text-decoration: none;
+}
+
 .skip-link:focus-visible {
-  transform: translateY(0);
+  transform: none;
+}
+
+@media (width <= 48rem) {
+  .skip-link {
+    top: auto;
+    bottom: calc(var(--header-height) + 1rem);
+    right: 0.75rem;
+    border-radius: 0.25rem;
+  }
 }
 
 hr {

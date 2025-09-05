@@ -1,15 +1,40 @@
 ---
 export interface Props {
   class?: string;
+  id?: string;
+  ariaLabel?: string;
+  ariaHidden?: boolean;
 }
 
-const { class: className } = Astro.props;
+const { class: className, id, ariaLabel, ariaHidden = false } = Astro.props as Props;
+const currentPath = Astro.url.pathname.replace(/\/$/, "");
 ---
 
-<nav class={`nav ${className || ""}`}>
+<nav
+  class={`nav ${className || ""}`}
+  id={id}
+  aria-label={ariaLabel || undefined}
+  aria-hidden={ariaHidden ? "true" : undefined}
+>
   <ul class="nav__list">
-    <li class="nav__item"><a href="/manufaktur" class="nav__link">Die Manufaktur</a></li>
-    <li class="nav__item"><a href="/geselle" class="nav__link">Der Geselle</a></li>
-    <li class="nav__item"><a href="/archiv" class="nav__link">Das Archiv</a></li>
+    <li class="nav__item">
+      <a
+        href="/manufaktur"
+        class="nav__link"
+        aria-current={currentPath === "/manufaktur" ? "page" : undefined}
+      >
+        Die Manufaktur
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="/geselle" class="nav__link" aria-current={currentPath === "/geselle" ? "page" : undefined}>
+        Der Geselle
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="/archiv" class="nav__link" aria-current={currentPath === "/archiv" ? "page" : undefined}>
+        Das Archiv
+      </a>
+    </li>
   </ul>
 </nav>

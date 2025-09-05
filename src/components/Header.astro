@@ -4,14 +4,14 @@ import Navigation from "@/components/Navigation.astro";
 import HeaderActions from "./HeaderActions.astro";
 ---
 
-<header class="header">
-  <a href="/">
+<header class="header" role="banner">
+  <a href="/" aria-label="Startseite" title="Startseite">
     <Logo />
   </a>
 
-  <Navigation class="header__nav--desktop" />
+  <Navigation class="header__nav--desktop" ariaLabel="Hauptnavigation" />
 
   <HeaderActions />
 
-  <Navigation class="header__nav--mobile" />
+  <Navigation class="header__nav--mobile" id="mobileNav" ariaLabel="Hauptnavigation mobil" ariaHidden={true} />
 </header>
