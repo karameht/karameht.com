@@ -76,7 +76,7 @@ const latestIteration = allIterations.sort(
   <section class="section" aria-labelledby="aktuell-heading">
     <div class="section__header">
       <h2 id="aktuell-heading">Aktuell</h2>
-      <a class="section__action" href="/archiv">Alle Beiträge →</a>
+      <a class="section__action" href="/archiv">Alle Beiträge</a>
     </div>
     <div class="posts">
       {
@@ -107,22 +107,22 @@ const latestIteration = allIterations.sort(
   <section class="section profile" aria-labelledby="profil-heading">
     <div class="section__header">
       <h2 id="profil-heading">Profil</h2>
-      <a class="section__action" href="/profil">Zum Profil →</a>
+      <a class="section__action" href="/profil">Zum Profil</a>
     </div>
     <div class="calibrate" aria-labelledby="calibrate-heading">
       <div class="calibrate__eyebrow">
-        <span class="badge">Feature</span>
+        <span class="badge badge--yellow">Feature</span>
       </div>
       <h3 id="calibrate-heading">Lesezeit kalibrieren</h3>
       <p class="calibrate__lead">
-        ⏱️ In etwa einer Minute misst du dein Lesetempo – damit alle Lesezeiten hier zu dir passen.
+        In etwa einer Minute misst du dein Lesetempo – damit alle Lesezeiten hier zu dir passen.
       </p>
       <ul class="calibrate__benefits">
         <li>Eigene statt Durchschnitts-Lesezeit</li>
         <li>Realistische Schätzungen in allen Beiträgen</li>
         <li>Basis für zeitbasierte Features</li>
       </ul>
-      <a class="button button--primary" href="/profil/lesezeit">Jetzt kalibrieren →</a>
+      <a class="btn btn--primary btn--compact" href="/profil/lesezeit">Jetzt kalibrieren</a>
     </div>
 
     <div class="profile__note">
@@ -145,15 +145,13 @@ const latestIteration = allIterations.sort(
   <section class="section" aria-labelledby="iterationen-heading">
     <div class="section__header">
       <h2 id="iterationen-heading">Iterationen</h2>
-      <a class="section__action" href="/iterationen">Alle Iterationen →</a>
+      <a class="section__action" href="/iterationen">Alle Iterationen</a>
     </div>
     {
       latestIteration && (
         <article class="iteration">
           <div class="iteration__meta">
-            <span class={`iteration__type iteration__type--${latestIteration.data.type}`}>
-              {latestIteration.data.type}
-            </span>
+            <span class={`badge badge--${latestIteration.data.type}`}>{latestIteration.data.type}</span>
             <span class="iteration__version">{latestIteration.data.version}</span>
             <time class="iteration__date">{latestIteration.data.date.toLocaleDateString("de-DE")}</time>
           </div>

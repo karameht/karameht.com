@@ -1,0 +1,56 @@
+.badge {
+  display: inline-block;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  border: var(--border-width) solid var(--border-color);
+}
+
+.badge--yellow {
+  background: var(--color-yellow);
+  color: var(--color-dark);
+  border-color: var(--color-yellow);
+}
+.badge--success {
+  background: #10b981;
+  color: white;
+  border-color: #10b981;
+}
+.badge--danger {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+.badge--feat {
+  background: var(--color-yellow);
+  color: var(--color-dark);
+  border-color: var(--color-yellow);
+}
+.badge--fix {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+.badge--refactor {
+  background: #8b5cf6;
+  color: white;
+  border-color: #8b5cf6;
+}
+.badge--doc {
+  background: #06b6d4;
+  color: white;
+  border-color: #06b6d4;
+}
+.badge--style {
+  background: #ec4899;
+  color: white;
+  border-color: #ec4899;
+}
+.badge--thought {
+  background: #64748b;
+  color: white;
+  border-color: #64748b;
+}

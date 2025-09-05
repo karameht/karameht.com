@@ -45,7 +45,7 @@ const breadcrumbSchema = {
           <article class="iteration">
             <div class="iteration__header">
               <div class="iteration__meta">
-                <span class={`iteration__type iteration__type--${iteration.data.type}`}>{iteration.data.type}</span>
+                <span class={`badge badge--${iteration.data.type}`}>{iteration.data.type}</span>
                 <span class="iteration__version">{iteration.data.version}</span>
                 <time class="iteration__date">{iteration.data.date.toLocaleDateString("de-DE")}</time>
               </div>

@@ -1,0 +1,79 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.95rem;
+  border: var(--border-width) solid var(--border-color);
+  background: transparent;
+  color: var(--text-color);
+  text-decoration: none;
+  position: relative;
+  transition:
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+.btn::after {
+  display: none !important;
+}
+
+.btn--primary {
+  background: var(--color-yellow);
+  border-color: var(--color-yellow);
+  color: var(--color-dark);
+}
+
+.btn--primary:hover,
+.btn--primary:focus {
+  background: #e2c300;
+  border-color: #e2c300;
+  color: var(--color-dark);
+}
+
+.btn--primary:link,
+.btn--primary:visited,
+.btn--primary:hover,
+.btn--primary:active {
+  color: var(--color-dark);
+  text-decoration: none;
+}
+
+.btn--success {
+  background: #10b981;
+  border-color: #10b981;
+  color: white;
+}
+.btn--success:hover,
+.btn--success:focus {
+  background: #059669;
+  border-color: #059669;
+}
+
+.btn--danger {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: white;
+}
+.btn--danger:hover,
+.btn--danger:focus {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+.btn--outline {
+  background: transparent;
+}
+.btn--outline:hover,
+.btn--outline:focus {
+  background: rgba(var(--border-rgb-dark), 0.08);
+  border-color: rgba(var(--border-rgb-dark), 0.4);
+}
+
+.btn--compact {
+  min-height: 2.1rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.9rem;
+}
