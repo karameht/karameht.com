@@ -3,6 +3,10 @@ export function initMenu(): void {
   const mobileNav = document.querySelector(".nav.header__nav--mobile") as HTMLElement;
 
   if (menuToggle && mobileNav) {
+    // Ensure closed state is non-focusable
+    mobileNav.setAttribute("aria-hidden", "true");
+    // @ts-ignore
+    (mobileNav as any).inert = true;
     menuToggle.removeEventListener("click", handleMenuToggle);
     menuToggle.addEventListener("click", handleMenuToggle);
   }
@@ -20,6 +24,8 @@ function handleMenuToggle() {
     mobileNav.classList.toggle("open");
     menuToggle.setAttribute("aria-expanded", String(willOpen));
     mobileNav.setAttribute("aria-hidden", String(!willOpen));
+    // @ts-ignore
+    (mobileNav as any).inert = !willOpen;
     html.classList.toggle("no-scroll", willOpen);
     body.classList.toggle("no-scroll", willOpen);
 
@@ -59,6 +65,8 @@ function handleMenuToggle() {
       body.classList.remove("no-scroll");
       menuToggle.setAttribute("aria-expanded", "false");
       mobileNav.setAttribute("aria-hidden", "true");
+      // @ts-ignore
+      (mobileNav as any).inert = true;
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("click", onClick);
     };
