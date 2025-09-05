@@ -25,6 +25,14 @@ const latestPosts = allPosts
   }));
 
 const allIterations = await getCollection("iteration");
+const typeDisplay: Record<string, string> = {
+  feat: "Feature",
+  fix: "Fix",
+  refactor: "Refactor",
+  doc: "Doc",
+  style: "Style",
+  thought: "Thought",
+};
 const latestIteration = allIterations.sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 )[0];
@@ -151,7 +159,9 @@ const latestIteration = allIterations.sort(
       latestIteration && (
         <article class="iteration">
           <div class="iteration__meta">
-            <span class={`badge badge--${latestIteration.data.type}`}>{latestIteration.data.type}</span>
+            <span class={`badge badge--${latestIteration.data.type}`}>
+              {typeDisplay[latestIteration.data.type] || latestIteration.data.type}
+            </span>
             <span class="iteration__version">{latestIteration.data.version}</span>
             <time class="iteration__date">{latestIteration.data.date.toLocaleDateString("de-DE")}</time>
           </div>
