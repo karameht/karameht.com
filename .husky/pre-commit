@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -o pipefail
+
+LOG_DIR=".logs"
+mkdir -p "$LOG_DIR"
+LOG_FILE="$LOG_DIR/pre-commit-$(date +%Y%m%d-%H%M%S).log"
+
+run_and_log() {
+  echo ">> $*" | tee -a "$LOG_FILE"
+  "$@" 2>&1 | tee -a "$LOG_FILE"
+  return ${PIPESTATUS[0]}
+}
+
+echo "🔍 Quality Gate - Pre-Commit Checks" | tee -a "$LOG_FILE"
+echo "====================================" | tee -a "$LOG_FILE"
+
+echo "📋 Running lint-staged..." | tee -a "$LOG_FILE"
+run_and_log yarn lint-staged
+if [ $? -ne 0 ]; then
+  echo "❌ lint-staged failed! See $LOG_FILE" | tee -a "$LOG_FILE"
+  exit 1
+fi
+
+echo "✨ Verifying Prettier formatting (repo-wide)..." | tee -a "$LOG_FILE"
+run_and_log yarn format:check
+if [ $? -ne 0 ]; then
+  echo "❌ Prettier check failed! Run 'yarn format' to fix. See $LOG_FILE" | tee -a "$LOG_FILE"
+  exit 1
+fi
+
+echo "📝 Running Remark checks for Markdown/MDX (repo-wide)..." | tee -a "$LOG_FILE"
+run_and_log yarn lint:md
+if [ $? -ne 0 ]; then
+  echo "❌ Remark found issues in Markdown/MDX. See $LOG_FILE" | tee -a "$LOG_FILE"
+  exit 1
+fi
+
+echo "🔧 Running TypeScript check..." | tee -a "$LOG_FILE"
+run_and_log yarn tsc --noEmit
+if [ $? -ne 0 ]; then
+  echo "❌ TypeScript errors found! Fix them before committing. See $LOG_FILE" | tee -a "$LOG_FILE"
+  exit 1
+fi
+
+echo "🧠 Running Astro check..." | tee -a "$LOG_FILE"
+run_and_log yarn check
+if [ $? -ne 0 ]; then
+  echo "❌ Astro check failed! Fix issues before committing. See $LOG_FILE" | tee -a "$LOG_FILE"
+  exit 1
+fi
+
+echo "✅ Pre-commit checks passed!" | tee -a "$LOG_FILE"
+echo "Log saved to $LOG_FILE" | tee -a "$LOG_FILE"
+echo "====================================" | tee -a "$LOG_FILE"
