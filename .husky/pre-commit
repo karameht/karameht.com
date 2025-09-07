@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -o pipefail
+[ -n "$BASH_VERSION" ] && set -o pipefail
 
 LOG_DIR=".logs"
 mkdir -p "$LOG_DIR"
@@ -7,8 +7,12 @@ LOG_FILE="$LOG_DIR/pre-commit-$(date +%Y%m%d-%H%M%S).log"
 
 run_and_log() {
   echo ">> $*" | tee -a "$LOG_FILE"
-  "$@" 2>&1 | tee -a "$LOG_FILE"
-  return ${PIPESTATUS[0]}
+  TMP_OUT=$(mktemp 2>/dev/null || echo "/tmp/precommit.$$.")
+  "$@" >"$TMP_OUT" 2>&1
+  status=$?
+  cat "$TMP_OUT" | tee -a "$LOG_FILE"
+  rm -f "$TMP_OUT"
+  return $status
 }
 
 echo "🔍 Quality Gate - Pre-Commit Checks" | tee -a "$LOG_FILE"

@@ -21,7 +21,11 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.4",
-    "astro": "^5.13.5"
+    "@astrojs/react": "^4.3.0",
+    "@karameht/a11y-lens": "^0.0.1-beta.2",
+    "astro": "^5.13.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "husky": "^9.1.7",
