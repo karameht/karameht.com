@@ -22,7 +22,10 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.4",
     "@astrojs/react": "^4.3.0",
-    "@karameht/a11y-lens": "^0.0.1-beta.2",
+    "@fontsource-variable/inter": "^5.2.6",
+    "@fontsource/allura": "^5.2.7",
+    "@fontsource/space-mono": "^5.2.8",
+    "@karameht/a11y-lens": "^0.0.1-beta.2.1",
     "astro": "^5.13.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"

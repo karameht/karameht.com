@@ -476,6 +476,21 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.25.9.tgz#585624dc829cfb6e7c0aa6c3ca7d7e6daa87e34f"
   integrity sha512-PPOl1mi6lpLNQxnGoyAfschAodRFYXJ+9fs6WHXz7CSWKbOqiMZsubC+BQsVKuul+3vKLuwTHsS2c2y9EoKwxQ==
 
+"@fontsource-variable/inter@^5.2.6":
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/@fontsource-variable/inter/-/inter-5.2.6.tgz#014f41f5eec8d177cc296721ebbd91dad241cd0b"
+  integrity sha512-jks/bficUPQ9nn7GvXvHtlQIPudW7Wx8CrlZoY8bhxgeobNxlQan8DclUJuYF2loYRrGpfrhCIZZspXYysiVGg==
+
+"@fontsource/allura@^5.2.7":
+  version "5.2.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/allura/-/allura-5.2.7.tgz#f4ff723026a980057a1337d2481b59c1c8688774"
+  integrity sha512-hiC6zLUpK6DxsOivwsSUxzYoh150mAbkqQy/bwzrtu6drVLX0UffdJzmMOAPnMnvjsceXtnptyNBHiB+LpuZsQ==
+
+"@fontsource/space-mono@^5.2.8":
+  version "5.2.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/space-mono/-/space-mono-5.2.8.tgz#7bb05ea93ac9e1e66fc48fb8a49590fa9c5a113e"
+  integrity sha512-25X0fg1+kxxLes9/c6AozhrrAuBW1uLaOL584IRg4DZxVxNOMzcS3mHS1UtmsyTwtU2HpiIt9Kv23Q+7xQO+hg==
+
 "@img/sharp-darwin-arm64@0.33.5":
   version "0.33.5"
   resolved "https://registry.yarnpkg.com/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.33.5.tgz#ef5b5a07862805f1e8145a377c8ba6e98813ca08"
@@ -635,10 +650,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@karameht/a11y-lens@^0.0.1-beta.2":
-  version "0.0.1-beta.2"
-  resolved "https://registry.yarnpkg.com/@karameht/a11y-lens/-/a11y-lens-0.0.1-beta.2.tgz#5c927580542cfcb6cc576f19c90ed929c5f97d29"
-  integrity sha512-aQWIhVlA8VnkpWAFd1owok3Rdgl+cstn3HsOXlzijcsnvm/vFSn5LBs/ybQ0dHVCuAw+xijrJCtdnOboO9OClw==
+"@karameht/a11y-lens@^0.0.1-beta.2.1":
+  version "0.0.1-beta.2.1"
+  resolved "https://registry.yarnpkg.com/@karameht/a11y-lens/-/a11y-lens-0.0.1-beta.2.1.tgz#2f04c28ff98b97a7416cb4df6a4123211fcd5417"
+  integrity sha512-KtHa57fwI+wQh1MdncGuRX3TCfeeaym5aJwilVWgNvDZDQyJ1hjVo/Ym0K8LQLzvlcaxn/eHxbyDHE+/wOn8iQ==
   dependencies:
     axe-core "^4.10.3"
 
