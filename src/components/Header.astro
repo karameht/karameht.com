@@ -1,9 +1,17 @@
 ---
-import Logo from './Logo.astro';
+import Logo from '@/components/Logo.astro';
+import Navigation from '@/components/Navigation.astro';
+import HeaderActions from './HeaderActions.astro';
 ---
 
 <header class="header" role="banner">
-  <a href="/" aria-label="Startseite" title="Startseite">
+  <a href="/" class="header__logo" aria-label="Startseite" title="Startseite">
     <Logo />
   </a>
+
+  <Navigation class="header__nav--desktop" ariaLabel="Hauptnavigation" />
+
+  <HeaderActions />
+
+  <Navigation class="header__nav--mobile" id="mobileNav" ariaLabel="Hauptnavigation mobil" />
 </header>

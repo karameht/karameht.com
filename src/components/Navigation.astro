@@ -1,0 +1,17 @@
+---
+export interface Props {
+  class?: string;
+  ariaLabel?: string;
+  id?: string;
+}
+
+const { class: className, ariaLabel, id } = Astro.props as Props;
+---
+
+<nav class={`nav ${className || ''}`} aria-label={ariaLabel} {id}>
+  <ul class="nav__list">
+    <li class="nav__item"><a href="/" class="nav__link">Die Manufaktur</a></li>
+    <li class="nav__item"><a href="/geselle" class="nav__link">Der Geselle</a></li>
+    <li class="nav__item"><a href="/archiv" class="nav__link">Das Archiv</a></li>
+  </ul>
+</nav>

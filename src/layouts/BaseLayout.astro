@@ -10,7 +10,7 @@ const {
 } = Astro.props as LayoutProps;
 
 import Aside from '@/components/Aside.astro';
-import DevA11Y from '@/components/DevA11y.astro';
+// import DevA11Y from '@/components/DevA11y.astro';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
 import '@/styles/karameht.css';
@@ -32,6 +32,7 @@ import '@/styles/karameht.css';
       <slot />
     </main>
     <Footer />
-    <DevA11Y />
+    <!-- <DevA11Y /> -->
+    <script src="/src/scripts/karameht.ts"></script>
   </body>
 </html>
