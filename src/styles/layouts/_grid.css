@@ -1,0 +1,28 @@
+.grid {
+  display: grid;
+  grid-template:
+    'header header' var(--header-height)
+    'aside main' 1fr
+    'aside footer' auto / var(--aside-width) 1fr;
+  min-height: 100vh;
+}
+
+@media (width <= 64rem) {
+  .grid {
+    grid-template:
+      'header header' var(--header-height)
+      'main main' 1fr
+      'aside aside' auto
+      'footer footer' auto / 1fr;
+  }
+}
+
+@media (width <= 48rem) {
+  .grid {
+    grid-template:
+      'main main' 1fr
+      'aside aside' auto
+      'footer footer' auto
+      'header header' var(--header-height) / 1fr;
+  }
+}

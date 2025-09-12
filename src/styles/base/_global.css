@@ -1,0 +1,29 @@
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--bg-primary);
+  font-weight: 200;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-yellow);
+  outline-offset: 2px;
+}
+
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}

@@ -1,0 +1,172 @@
+h1,
+h2,
+h3 {
+  margin-bottom: var(--space-unit);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+}
+
+h2 {
+  font-size: clamp(1rem, 1vw + 0.25rem, 1.25rem);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 1.2em;
+  letter-spacing: 0.01em;
+  text-align-last: left;
+  text-wrap: pretty;
+  word-spacing: 0.05em;
+  hyphens: auto;
+}
+
+strong {
+  font-weight: 500;
+}
+
+ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5em;
+  list-style-position: outside;
+}
+
+ul li {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  font-weight: 300;
+  line-height: 1.8;
+  padding-left: 0.5rem;
+}
+
+ul li::marker {
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  position: relative;
+  font-weight: 400;
+  transition: color 0.3s var(--ease);
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.15em;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+
+a:hover {
+  color: var(--color-yellow);
+}
+
+a:hover::after {
+  transform: scaleX(1);
+}
+
+a:focus {
+  outline: none;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-yellow);
+  outline-offset: 2px;
+}
+
+a:visited {
+  color: var(--text-color);
+}
+
+a:active {
+  color: var(--color-yellow);
+}
+
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-dark);
+}
+
+blockquote {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.8;
+  margin: 2rem 0;
+  padding: 3rem;
+  border-left: 0.25rem solid var(--color-yellow);
+  background: rgba(var(--border-rgb-dark), 0.05);
+  color: var(--text-color);
+  position: relative;
+  width: 100%;
+  hyphens: auto;
+  word-break: break-word;
+}
+
+blockquote::after {
+  content: '”';
+  font-size: 15rem;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-yellow);
+  position: absolute;
+  bottom: -15rem;
+  right: -0.1rem;
+  opacity: 0.1;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: right;
+  color: rgba(var(--border-rgb-dark), 0.5);
+}
+
+address {
+  margin: 2rem 0;
+}
+
+address p {
+  margin-bottom: 0;
+}
+
+code,
+pre {
+  font-family: var(--font-code);
+}
+
+@media (width <= 64rem) {
+  blockquote::after {
+    bottom: -15rem;
+  }
+}
+
+@media (width <= 48rem) {
+  blockquote {
+    padding: 2rem;
+  }
+}

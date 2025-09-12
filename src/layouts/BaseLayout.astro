@@ -1,0 +1,37 @@
+---
+interface LayoutProps {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'karameht | Manufaktur für digitale Askese',
+  description = 'Das Siegel der Unnachahmlichkeit in der Manufaktur für digitale Askese ... die Schöpfung von [ˈʁɛflɛksi̯oːn]',
+} = Astro.props as LayoutProps;
+
+import Aside from '@/components/Aside.astro';
+import DevA11Y from '@/components/DevA11y.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import '@/styles/karameht.css';
+---
+
+<html lang="de" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content={description} />
+  </head>
+  <body class="grid">
+    <Header />
+    <Aside />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <DevA11Y />
+  </body>
+</html>

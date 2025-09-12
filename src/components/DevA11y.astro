@@ -1,0 +1,9 @@
+---
+let DevA11y: any = null;
+if (import.meta.env.DEV) {
+  const mod = await import('@/components/A11yLensClient.astro');
+  DevA11y = mod.default;
+}
+---
+
+{DevA11y && <DevA11y />}

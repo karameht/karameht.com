@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  grid-area: footer;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 3rem;
+  border-top: var(--border-width) solid var(--border-color);
+}
+
+.footer__left p {
+  margin: 0;
+  font-size: clamp(0.75rem, 0.95rem + 0.25vw, 0.75rem);
+}

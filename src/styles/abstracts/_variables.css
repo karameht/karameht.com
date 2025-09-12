@@ -1,0 +1,31 @@
+:root {
+  /* Color Palette */
+  --color-dark: #111;
+  --color-light: #f5f3df;
+  --color-yellow: #f6e024;
+
+  /* Border System */
+  --border-rgb-dark: 255, 255, 255;
+  --border-rgb-light: 0, 0, 0;
+  --border-opacity-dark: 0.1;
+  --border-opacity-light: 0.1;
+  --border-width: 0.0625rem;
+  --border-color: rgba(var(--border-rgb-dark), var(--border-opacity-dark));
+
+  /* Typography */
+  --font-body: 'Inter Variable', sans-serif;
+  --font-code: 'Space Mono', monospace;
+
+  /* Spacing & Layout */
+  --gap: clamp(1rem, 2vw, 1.5rem);
+  --space-unit: 1rem;
+  --aside-width: 4.5rem;
+  --header-height: 4.375rem;
+
+  /* Theme Variables */
+  --bg-primary: var(--color-dark);
+  --text-color: var(--color-light);
+
+  /* Animation */
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}

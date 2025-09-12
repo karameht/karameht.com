@@ -66,7 +66,7 @@ This document summarizes the setup, tooling, and workflows for karameht.com (ver
 - `build`: build static site
 - `preview`: preview build
 - `astro`: direct Astro CLI
-- `check`: `astro check`
+- `astro:check`: `astro check`
 - `format`: `prettier --write .`
 - `format:check`: `prettier --check .`
 - `lint:md`: `remark . --quiet --frail --ext .md,.mdx`

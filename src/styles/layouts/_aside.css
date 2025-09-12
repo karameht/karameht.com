@@ -1,0 +1,31 @@
+.aside {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--aside-width);
+  height: calc(100vh - var(--header-height));
+  padding: 1rem;
+  border-right: var(--border-width) solid var(--border-color);
+}
+
+.aside__top,
+.aside__bottom {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+@media (width <= 64rem) {
+  .aside {
+    display: none;
+  }
+}

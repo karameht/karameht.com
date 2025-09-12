@@ -47,7 +47,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "🧠 Running Astro check..." | tee -a "$LOG_FILE"
-run_and_log yarn check
+run_and_log yarn astro:check
 if [ $? -ne 0 ]; then
   echo "❌ Astro check failed! Fix issues before committing. See $LOG_FILE" | tee -a "$LOG_FILE"
   exit 1
