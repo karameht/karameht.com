@@ -1,21 +1,22 @@
-main {
+.main {
   grid-area: main;
   padding: 7rem;
   margin: 2rem;
-}
 
-.main__section {
-  max-width: 60rem;
-  margin: 0 auto;
+  &__section {
+    max-width: 60rem;
+    margin: 0 auto;
+  }
 }
 
 @media (width <= 48rem) {
-  main {
+  .main {
     margin: 0;
     padding: 3rem 3rem calc(1rem + env(safe-area-inset-bottom));
-  }
-  .main__section {
-    max-width: 60rem;
-    margin: 0 auto;
+
+    &__section {
+      max-width: 60rem;
+      margin: 0 auto;
+    }
   }
 }

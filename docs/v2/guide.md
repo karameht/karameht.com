@@ -48,3 +48,25 @@ This guide documents the BaseLayout + Grid refactor and CSS cleanup introduced i
 - BEM-like class names without nested CSS.
 - Keep selectors shallow; prefer single-class selectors.
 - Only add rules when markup needs them; avoid speculative styles.
+
+## CSS Nesting Setup
+
+- Install: `yarn add -D postcss-nested`
+- Config: `postcss.config.cjs`
+  - `module.exports = { plugins: [ require('postcss-nested') ] }`
+- Rationale: We use BEM (`.block { &__element { ... } &--modifier { ... } }`) and nested pseudo/selectors (`a { &:hover { ... } }`). `postcss-nested` supports this Sass-like syntax reliably.
+
+### Refactor Plan to Nested
+
+- Header (`src/styles/layouts/_header.css`)
+  - Group `.header__*` under `.header { ... }`, nest `ul/li/a`, `&.open`, and pseudo-classes.
+- Aside (`src/styles/layouts/_aside.css`)
+  - Move `.aside__top, .aside__bottom` inside `.aside { &__top, &__bottom { ... } }`.
+- Main (`src/styles/layouts/_main.css`)
+  - Move `.main__section` inside `main { &__section { ... } }`.
+- Footer (`src/styles/layouts/_footer.css`)
+  - Move `.footer__left p` and `.footer__links a:hover` inside `.footer { ... }`.
+- Typography (`src/styles/base/_typography.css`)
+  - Nest `ul li::marker`, `a::after`, `a:hover::after`, `blockquote::after`, `blockquote p/cite`, `address p`.
+
+Once `postcss-nested` is installed, we can safely convert each file; the end result is identical CSS output with cleaner structure.
