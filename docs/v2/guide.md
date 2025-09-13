@@ -17,6 +17,7 @@ This guide documents the BaseLayout + Grid refactor and CSS cleanup introduced i
 - Grid template (`src/styles/layouts/_grid.css`) defines header/aside/main/footer tracks.
 - Fixed Header and Aside; Main fills remaining space; Footer stays at bottom.
 - Aside hides below 64rem to maximize content area.
+- Main content: optional `.main__section` container centers content and caps width at 60rem.
 
 ## Client Scripts
 
@@ -37,8 +38,8 @@ This guide documents the BaseLayout + Grid refactor and CSS cleanup introduced i
 
 - `src/styles/layouts/_header.css` (flattened selectors)
 - `src/styles/layouts/_aside.css` (flattened `.aside__top/.aside__bottom`)
-- `src/styles/layouts/_main.css` (no min-height; grid controls height)
-- `src/styles/layouts/_footer.css` (flattened, minimal rules)
+- `src/styles/layouts/_main.css` (no min-height; grid controls height; `.main__section` width cap)
+- `src/styles/layouts/_footer.css` (flattened, minimal rules; legal links styled like copyright)
 - `src/styles/base/_global.css` (pruned unused globals)
 - `src/styles/base/_typography.css` (flattened anchors, lists, blockquotes, address)
 

@@ -7,6 +7,7 @@
 - Components: `Navigation.astro` and `HeaderActions.astro` integrated into `Header.astro`.
 - Client scripts: `src/scripts/karameht.ts` (entry) and `src/scripts/components/menu.ts` (mobile menu).
 - Documentation: `docs/v2/guide.md` expanded with scripts and component props.
+- Main container: `.main__section` for centered content with 60rem max-width.
 
 ### Changed
 
@@ -16,6 +17,11 @@
 - Removed unused imports and rules (e.g., Allura font, skip-link, nav/menu placeholders).
 - `Header.astro`: Moved `.header__logo` class to the link wrapper (SVG remains unstyled).
 - `BaseLayout.astro`: Script loading now uses a static `src` attribute for Astro bundling.
+- Footer: Simplified to legal links only; link font-size aligned with copyright text.
+
+### Removed
+
+- Legacy footer menu structure and responsive variants (`footer__menu`, `footer__menu-item--desktop-only`, `footer__link-*`). Replaced by a simple legal links list that works on all viewports.
 
 ### Fixed
 
