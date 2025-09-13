@@ -6,12 +6,27 @@ export interface Props {
 }
 
 const { class: className, ariaLabel, id } = Astro.props as Props;
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <nav class={`nav ${className || ''}`} aria-label={ariaLabel} {id}>
   <ul class="nav__list">
-    <li class="nav__item"><a href="/" class="nav__link">Die Manufaktur</a></li>
-    <li class="nav__item"><a href="/geselle" class="nav__link">Der Geselle</a></li>
-    <li class="nav__item"><a href="/archiv" class="nav__link">Das Archiv</a></li>
+    <li class="nav__item">
+      <a href="/" class="nav__link" aria-current={current === '/' ? 'page' : undefined}
+        >Die Manufaktur</a
+      >
+    </li>
+    <li class="nav__item">
+      <a
+        href="/geselle"
+        class="nav__link"
+        aria-current={current === '/geselle' ? 'page' : undefined}>Der Geselle</a
+      >
+    </li>
+    <li class="nav__item">
+      <a href="/archiv" class="nav__link" aria-current={current === '/archiv' ? 'page' : undefined}
+        >Das Archiv</a
+      >
+    </li>
   </ul>
 </nav>

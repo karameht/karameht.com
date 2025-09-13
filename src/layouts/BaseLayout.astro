@@ -26,9 +26,10 @@ import '@/styles/karameht.css';
     <meta name="description" content={description} />
   </head>
   <body class="grid">
+    <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
     <Header />
     <Aside />
-    <main class="main">
+    <main id="main-content" class="main" tabindex="-1">
       <div class="main__section">
         <slot />
       </div>

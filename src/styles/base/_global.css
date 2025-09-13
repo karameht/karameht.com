@@ -22,6 +22,40 @@ body {
   outline-offset: 2px;
 }
 
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  left: auto;
+  transform: translateY(-200%);
+  background: var(--color-yellow);
+  color: var(--color-dark);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  z-index: 2000;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.skip-link,
+.skip-link:visited,
+.skip-link:hover,
+.skip-link:active,
+.skip-link:focus-visible {
+  color: var(--color-dark);
+}
+
+@media (width <= 48rem) {
+  .skip-link {
+    top: auto;
+    bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    transform: translateY(200%);
+  }
+}
+
 html.no-scroll,
 body.no-scroll {
   overflow: hidden;

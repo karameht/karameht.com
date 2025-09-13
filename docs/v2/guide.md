@@ -12,12 +12,43 @@ This guide documents the BaseLayout + Grid refactor and CSS cleanup introduced i
 - A11y helpers preserved: focus-visible, reduced-motion, typography improvements.
 - Navigation + HeaderActions integrated; mobile menu controlled by `src/scripts/components/menu.ts`.
 
+## Accessibility
+
+- Skip link: Adds a visible “Zum Inhalt springen” link as first focusable element.
+  - Markup: `<a href="#main-content" class="skip-link">Zum Inhalt springen</a>`
+  - Target: `<main id="main-content" tabindex="-1">` to receive focus programmatically
+  - Position: desktop → top-right; mobile (`<=48rem`) → bottom-right with safe-area offset
+- Landmarks: `<header>`, `<main>`, `<aside aria-hidden="true">`, `<footer>`, `<nav aria-label="…">`
+- Mobile navigation (a11y):
+  - Toggle button uses `aria-controls`, `aria-expanded`, and switches `aria-label` (open/close)
+  - Mobile nav toggles `aria-hidden` + `inert`, traps focus, closes on `Escape`, and releases scroll on close
+  - Implemented in `src/scripts/components/menu.ts`, initialized via `src/scripts/karameht.ts`
+- Focus: global `:focus-visible` outlines; links keep visible underline-animation and focus outline
+- Reduced motion: `@media (prefers-reduced-motion: reduce)` disables animations/transitions
+- Icons: Header action SVGs are `aria-hidden="true"` and `focusable="false"`; links provide labels
+- Active link: Navigation marks the current page with `aria-current="page"`
+
 ## Layout Structure
 
 - Grid template (`src/styles/layouts/_grid.css`) defines header/aside/main/footer tracks.
 - Fixed Header and Aside; Main fills remaining space; Footer stays at bottom.
 - Aside hides below 64rem to maximize content area.
 - Main content: optional `.main__section` container centers content and caps width at 60rem.
+
+## Breakpoints
+
+- Desktop-first defaults (> 64rem):
+  - Header fixed at top; desktop nav visible; menu toggle hidden
+  - Aside visible on the left; grid spans header/aside/main/footer
+  - Skip link appears top-right on focus
+- `<= 64rem` (tablet):
+  - Desktop nav hidden; menu toggle shown; mobile nav overlays on open
+  - Aside hidden
+  - Grid reflows to header, main, aside, footer stacked
+- `<= 48rem` (mobile):
+  - Header pinned to bottom; logo moved to bottom-left
+  - Mobile nav overlays full height above header with safe-area padding
+  - Main padding reduced; skip link moves to bottom-right and remains accessible
 
 ## Client Scripts
 
@@ -29,6 +60,7 @@ This guide documents the BaseLayout + Grid refactor and CSS cleanup introduced i
 - `src/components/Navigation.astro`
   - Props: `class?`, `ariaLabel?`, `id?` (forwarded to `<nav>`).
   - Used twice in `Header.astro` for desktop and mobile.
+  - Sets `aria-current="page"` automatically for the active route.
 - `src/components/HeaderActions.astro`
   - Icons + menu toggle button (`#menuToggle`).
 - `src/components/Header.astro`
